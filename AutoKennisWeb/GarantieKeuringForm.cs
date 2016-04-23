@@ -5,8 +5,8 @@ using System.Web.UI;
 namespace AutoKennisWeb {
 	
 	public partial class GarantieKeuringForm : System.Web.UI.Page {
-		public void button1Clicked(object sender, EventArgs args) {
-			button1.Text = "You clicked me";
+		public void submitButtonClicked(object sender, EventArgs args) {
+			
 		}
 	}
 }

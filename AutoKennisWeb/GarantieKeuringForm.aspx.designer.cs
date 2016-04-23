@@ -14,9 +14,6 @@ namespace AutoKennisWeb {
 	public partial class GarantieKeuringForm {
 		
 		protected System.Web.UI.HtmlControls.HtmlForm form1;
-		
-		protected System.Web.UI.WebControls.TextBox tb4;
-		
-		protected System.Web.UI.WebControls.Button button1;
+
 	}
 }
