@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" Inherits="AutoKennisWeb.GarantieKeuringForm" %>
+﻿<%@ Page Language="C#" Inherits="AutoKennisWeb.AutoAdvies" %>
 
 <!DOCTYPE HTML>
 <html>
@@ -13,22 +13,22 @@
     id="theme" />
     <!-- End of the headers for CoffeeCup Web Form Builder -->
     <title>
-      garantie-keuring-form
+      auto-advies-form
     </title>
   </head>
   
   <body>
     <!-- Start of the body content for CoffeeCup Web Form Builder -->
-    <form runat="server" style="WIDTH: 910px; FONT-SIZE: 12px; WebkitTransform: " id="docContainer"
+    <form style="WIDTH: 910px; FONT-SIZE: 12px; WebkitTransform: " id="docContainer"
     class="fb-toplabel fb-100-item-column fb-large selected-object" enctype="multipart/form-data"
-    method="post" action="../garantie-keuring-form.php" novalidate="novalidate"
-    data-form="manual_iframe">
+    method="post" action="../auto-advies-form.php" novalidate="novalidate"
+    data-form="manual_iframe" runat="server">
       <div style="MIN-HEIGHT: 103px" id="fb-form-header1" class="fb-form-header fb-item-alignment-left">
-        <a id="fb-link-logo1" class="fb-link-logo" href="" target="_top"><img style="WIDTH: 223px; DISPLAY: inline; HEIGHT: 103px" id="fb-logo1" class="fb-logo" title="" alt="" src="common/images/foto-allebedrijven.jpg"/></a>
+        <a id="fb-link-logo1" class="fb-link-logo" href="" target="_top"><img style="WIDTH: 223px; DISPLAY: inline; HEIGHT: 103px" id="fb-logo1" class="fb-logo" title="Alternative text" alt="Alternative text" src="common/images/foto-allebedrijven.jpg"/></a>
       </div>
       <div id="section1" class="section">
         <div id="column1" class="column ui-sortable">
-          <div style="MIN-HEIGHT: 1244px; DISPLAY: none" id="fb_confirm_inline">
+          <div style="MIN-HEIGHT: 1294px; DISPLAY: none" id="fb_confirm_inline">
           </div>
           <div style="DISPLAY: none" id="fb_error_report">
           </div>
@@ -36,7 +36,7 @@
           class="fb-item fb-100-item-column">
             <div class="fb-header fb-item-alignment-center">
               <h2 style="DISPLAY: inline; FONT-SIZE: 14px">
-                Gebruik onderstaand formulier voor het aanvragen van een Auto-Kennis Garantie-Keuring
+                Gebruik onderstaand formulier voor het aanvragen van een Auto-Kennis Auto-Advies
               </h2>
             </div>
           </div>
@@ -117,7 +117,7 @@
           </div>
           <div style="PADDING-BOTTOM: 10px" id="item15" class="fb-item fb-50-item-column">
             <div class="fb-grouplabel">
-              <label style="DISPLAY: inline" for="preferredDate">Gewenste datum Garantie-Keuring* </label>
+              <label style="DISPLAY: inline" for="preferredDate">Gewenste datum Auto-Advies* </label>
             </div>
             <div class="fb-input-date">
               <asp:TextBox id="preferredDate" type="date" CssClass="datepicker" required="true" runat="server"/>
@@ -143,7 +143,6 @@
               </p>
             </div>
           </div>
-
           <div style="PADDING-BOTTOM: 10px" id="item19" class="fb-item fb-25-item-column">
             <div class="fb-grouplabel">
               <label style="DISPLAY: inline" for="carBrand">Merk*</label>
@@ -176,15 +175,25 @@
               <asp:TextBox id="carYear" required="true" maxlength="254" runat="server"/>
             </div>
           </div>
+
           <div style="PADDING-BOTTOM: 10px" id="item24" class="fb-item fb-100-item-column">
             <div class="fb-static-text fb-item-alignment-center">
               <p style="COLOR: #000000; FONT-SIZE: 12px; FONT-WEIGHT: bold">
-                Adres-gegevens waar de auto gekeurd dient te worden ( alleen invullen
-                indien anders dan boven ingevuld )
+                Gegevens Adres Auto
               </p>
             </div>
           </div>
-          <div style="PADDING-BOTTOM: 10px" id="item25" class="fb-item fb-50-item-column">
+          <div style="PADDING-BOTTOM: 10px" id="item41" class="fb-item fb-100-item-column">
+            <div class="fb-static-text">
+              <p style="COLOR: #000000; FONT-SIZE: 12px">
+                Alleen in te vullen indien het adres waar de auto ge&iuml;nspecteerd dient
+                te worden anders is dan uw eigen adres.
+              </p>
+            </div>
+          </div>
+
+          
+            <div style="PADDING-BOTTOM: 10px" id="item25" class="fb-item fb-50-item-column">
             <div class="fb-grouplabel">
               <label style="DISPLAY: inline" id="item25_label_0">Adres Auto</label>
             </div>
@@ -212,8 +221,6 @@
               />
             </div>
           </div>
-
-
           <div id="item33" class="fb-item fb-100-item-column">
             <div class="fb-grouplabel">
               <label style="DISPLAY: inline" id="item33_label_0">Eventuele aanvullende gegevens kunt u hier invullen </label>
@@ -239,8 +246,8 @@
             <div class="fb-static-text fb-item-alignment-center">
               <p style="COLOR: #000000; FONT-SIZE: 12px">
                 Nadat uw aanvraag bij ons binnen is ontvangt u zo spoedig mogelijk per
-                email een overzicht van de kosten. De kosten van een Auto-Kennis Garantie-Keuring
-                bedragen &euro; 89,- excl. eventuele toeslagen en de gemaakte kilometerkosten.
+                email een overzicht van de kosten. De kosten van een Auto-Kennis Auto-Advies
+                bedragen &euro; 89,- excl. toeslagen en de gemaakte kilometerkosten.
               </p>
             </div>
           </div>

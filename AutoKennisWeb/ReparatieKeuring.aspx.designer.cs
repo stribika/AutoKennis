@@ -11,7 +11,7 @@
 namespace AutoKennisWeb {
 	
 	
-	public partial class GarantieKeuringForm {
+	public partial class ReparatieKeuring {
 		
 		protected System.Web.UI.HtmlControls.HtmlForm form1;
 
