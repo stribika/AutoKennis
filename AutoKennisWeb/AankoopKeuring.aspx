@@ -116,7 +116,7 @@
           </div>
           <div style="PADDING-BOTTOM: 10px" id="item15" class="fb-item fb-50-item-column">
             <div class="fb-grouplabel">
-              <label style="DISPLAY: inline" for="preferredDate">Gewenste datum Garantie-Keuring* </label>
+              <label style="DISPLAY: inline" for="preferredDate">Gewenste datum Aankoop-Keuring* </label>
             </div>
             <div class="fb-input-date">
               <asp:TextBox id="preferredDate" type="date" CssClass="datepicker" required="true" runat="server"/>

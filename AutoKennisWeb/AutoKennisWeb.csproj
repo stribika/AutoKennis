@@ -44,6 +44,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.IO.Compression.FileSystem" />
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Web.Services" />
@@ -104,6 +105,7 @@
     <Compile Include="GarantieKeuringForm.aspx.designer.cs">
       <DependentUpon>GarantieKeuringForm.aspx</DependentUpon>
     </Compile>
+    <Compile Include="ReportEditor.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

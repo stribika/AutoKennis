@@ -164,7 +164,7 @@
             <div class="fb-grouplabel">
               <label style="DISPLAY: inline" for="carLicensePlate">Kenteken* </label>
             </div>
-            <div class="fb-input-box">
+            <div class="fb-input-box-spec">
               <asp:TextBox id="carLicensePlate" required="true" maxlength="254" placeholder="bijv. 16-XLJ-3" runat="server"/>
             </div>
           </div>
