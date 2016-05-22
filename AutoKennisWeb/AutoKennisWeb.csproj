@@ -58,6 +58,7 @@
     <Content Include="web.config" />
     <Content Include="Default.aspx" />
     <Content Include="GarantieKeuringForm.aspx" />
+    <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AankoopBegeleiding.aspx.cs">
