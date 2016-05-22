@@ -19,7 +19,7 @@ namespace AutoKennisWeb
             ZipFile.ExtractToDirectory(startPath, extractPath);
 
             XmlDocument editedDoc = new XmlDocument();
-            editedDoc.LoadXml(editXml(extractPath + @"\word\document.xml"));
+            editedDoc.LoadXml(editXml(extractPath + @"\word\document.xml", null));
             editedDoc.Save("document.xml");
 
             File.Replace("document.xml", extractPath + @"\word\document.xml", "backup.xml");

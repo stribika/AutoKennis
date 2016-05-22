@@ -51,6 +51,8 @@
     <Reference Include="Npgsql">
       <HintPath>..\packages\Npgsql.3.1.2\lib\net45\Npgsql.dll</HintPath>
     </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="AankoopBegeleiding.aspx" />
@@ -110,6 +112,9 @@
       <DependentUpon>GarantieKeuringForm.aspx</DependentUpon>
     </Compile>
     <Compile Include="ReportEditor.cs" />
+    <Compile Include="IFormDAO.cs" />
+    <Compile Include="FormDAO.cs" />
+    <Compile Include="AppConfig.cs" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
