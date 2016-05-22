@@ -27,9 +27,13 @@ namespace AutoKennisWeb
             ZipFile.CreateFromDirectory(extractPath, zipPath);
         }
 
-        private string editXml(string xmlPath)
+		private string editXml(string xmlPath, Dictionary<string, string> parameters)
         {
             string xml = File.ReadAllText(xmlPath);
+
+			foreach (var param in parameters) {
+				xml = xml.Replace("$({" + param.Key + "})", param.Value);
+			}
             xml = xml.Replace("$({Name})", "Test Name").Replace("$({reportDate})", DateTime.Today.ToString());
             xml = xml.Replace("$({carType})", "Test Type").Replace("$({carLicensePlate})", "Test Licenceplate");
             xml = xml.Replace("$({carKm})", "Test km").Replace("$({carYear})", "Test Year").Replace("$({carPrice})", "Test price");

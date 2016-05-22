@@ -48,6 +48,9 @@
     <Reference Include="System.Web" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Web.Services" />
+    <Reference Include="Npgsql">
+      <HintPath>..\packages\Npgsql.3.1.2\lib\net45\Npgsql.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Content Include="AankoopBegeleiding.aspx" />
