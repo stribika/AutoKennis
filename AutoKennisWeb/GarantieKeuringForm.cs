@@ -7,7 +7,10 @@ namespace AutoKennisWeb {
 	
 	public partial class GarantieKeuringForm : System.Web.UI.Page {
 		public void submitButtonClicked(object sender, EventArgs args) {
-			AppConfig.Instance.FormDAO.saveForm(4, new Dictionary<string, string>());
+            var form = new FormDTO();
+            form.Fullname = Request.Form.Get("fullname");
+
+            AppConfig.Instance.FormDAO.saveForm(form);
 		}
 	}
 }

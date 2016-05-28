@@ -104,7 +104,7 @@
           </div>
           <div style="PADDING-BOTTOM: 10px" id="item11" class="fb-item fb-25-item-column">
             <div class="fb-grouplabel">
-              <label style="DISPLAY: inline" for="phoneNumberAlernate">Alternatief telefoonnummer</label>
+              <label style="DISPLAY: inline" for="phoneNumberAlternate">Alternatief telefoonnummer</label>
             </div>
             <div class="fb-input-box">
               <asp:TextBox id="phoneNumberAlternate" MaxLength="254" runat="server"/>
@@ -162,10 +162,10 @@
           </div>
           <div id="item21" class="fb-item fb-25-item-column">
             <div class="fb-grouplabel">
-              <label style="DISPLAY: inline" for="carLicensePlate">Kenteken* </label>
+              <label style="DISPLAY: inline" for="carLicencePlate">Kenteken* </label>
             </div>
             <div class="fb-input-box-spec">
-              <asp:TextBox id="carLicensePlate" required="true" maxlength="254" placeholder="bijv. 16-XLJ-3" runat="server"/>
+              <asp:TextBox id="carLicencePlate" required="true" maxlength="254" placeholder="bijv. 16-XLJ-3" runat="server"/>
             </div>
           </div>
           <div style="PADDING-BOTTOM: 10px" id="item22" class="fb-item fb-25-item-column">
@@ -189,8 +189,7 @@
               <label style="DISPLAY: inline" id="item25_label_0">Adres Auto</label>
             </div>
             <div class="fb-input-box">
-              <input id="item25_text_1" class="" name="Adres-auto" maxlength="254" data-hint=""
-              autocomplete="off" placeholder="Straat + huisnummer" type="text" />
+              <asp:TextBox id="carAddress" class="" name="Adres-auto" maxlength="254" placeholder="Straat + huisnummer" type="text" runat="server"/>
             </div>
           </div>
           <div id="item26" class="fb-item fb-25-item-column">
@@ -198,8 +197,8 @@
               <label style="DISPLAY: inline" id="item26_label_0">Woonplaats</label>
             </div>
             <div class="fb-input-box">
-              <input id="item26_text_1" name="Plaats-auto" maxlength="254" data-hint=""
-              autocomplete="off" placeholder="" type="text" />
+              <asp:TextBox id="carCity" name="Plaats-auto" maxlength="254" data-hint=""
+              autocomplete="off" placeholder="" type="text" runat="server"/>
             </div>
           </div>
           <div style="PADDING-BOTTOM: 10px" id="item27" class="fb-item fb-25-item-column">
@@ -207,8 +206,8 @@
               <label style="DISPLAY: inline" id="item27_label_0">Postcode</label>
             </div>
             <div class="fb-input-box">
-              <input id="item27_text_1" class="" name="Postcode-auto" maxlength="254"
-              data-hint="" autocomplete="off" placeholder="bijv. 1011AB" type="text"
+              <asp:TextBox id="carPostcode" class="" name="Postcode-auto" maxlength="254"
+              data-hint="" autocomplete="off" placeholder="bijv. 1011AB" type="text" runat="server"
               />
             </div>
           </div>
@@ -219,8 +218,8 @@
               <label style="DISPLAY: inline" id="item33_label_0">Eventuele aanvullende gegevens kunt u hier invullen </label>
             </div>
             <div class="fb-input-box">
-              <input id="item33_text_1" name="Opmerkingen" maxlength="254" data-hint=""
-              autocomplete="off" placeholder="" type="text" />
+              <asp:TextBox id="comments" name="Opmerkingen" maxlength="254" data-hint=""
+              autocomplete="off" placeholder="" type="text" runat="server" />
             </div>
           </div>
           <div id="item34" class="fb-item">

@@ -87,6 +87,7 @@
     <Compile Include="AutoAdvies.aspx.designer.cs">
       <DependentUpon>AutoAdvies.aspx</DependentUpon>
     </Compile>
+    <Compile Include="FormDTO.cs" />
     <Compile Include="ReparatieKeuring.aspx.designer.cs">
       <DependentUpon>ReparatieKeuring.aspx</DependentUpon>
     </Compile>

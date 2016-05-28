@@ -13,7 +13,7 @@ namespace AutoKennisWeb {
 				if (formDAO == null) {
 					lock (sync) {
 						if (formDAO == null) {
-							formDAO = new FormDAO("Host=localhost;Username=autokennis;Database=autokennis", Npgsql.NpgsqlFactory.Instance);
+							formDAO = new FormDAO("Host=localhost;Username=AutoKennis;Database=AutoKennis", Npgsql.NpgsqlFactory.Instance);
 						}
 					}
 				}
