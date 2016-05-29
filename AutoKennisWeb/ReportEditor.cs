@@ -36,11 +36,11 @@ namespace AutoKennisWeb
 			foreach (var param in parameters) {
 				xml = xml.Replace("$({" + param.Key + "})", param.Value);
 			}
-            xml = xml.Replace("$({Name})", "Test Name").Replace("$({reportDate})", DateTime.Today.ToString());
-            xml = xml.Replace("$({carType})", "Test Type").Replace("$({carLicensePlate})", "Test Licenceplate");
-            xml = xml.Replace("$({carKm})", "Test km").Replace("$({carYear})", "Test Year").Replace("$({carPrice})", "Test price");
-            xml = xml.Replace("$({cst})", "Test cost").Replace("$({km})", "$({km})").Replace("$({ttc})", "$({ttc})");
-            xml = xml.Replace("$({carHistory})", "Test history");
+            //xml = xml.Replace("$({Name})", "Test Name").Replace("$({reportDate})", DateTime.Today.ToString());
+            //xml = xml.Replace("$({carType})", "Test Type").Replace("$({carLicensePlate})", "Test Licenceplate");
+            //xml = xml.Replace("$({carKm})", "Test km").Replace("$({carYear})", "Test Year").Replace("$({carPrice})", "Test price");
+            //xml = xml.Replace("$({cst})", "Test cost").Replace("$({km})", "$({km})").Replace("$({ttc})", "$({ttc})");
+            //xml = xml.Replace("$({carHistory})", "Test history");
 
             return xml;
         }
