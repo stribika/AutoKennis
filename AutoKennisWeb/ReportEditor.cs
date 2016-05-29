@@ -24,6 +24,8 @@ namespace AutoKennisWeb
 
             File.Replace("document.xml", extractPath + @"\word\document.xml", "backup.xml");
 
+            //file replace a kepeket is kesobb
+
             ZipFile.CreateFromDirectory(extractPath, zipPath);
         }
 

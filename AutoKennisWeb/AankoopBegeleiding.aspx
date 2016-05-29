@@ -287,7 +287,7 @@
               <label style="DISPLAY: inline" id="item37_label_0">Gewenste wijze van betalen* </label>
             </div>
             <div class="fb-dropdown">
-              <select id="item37_select_1" name="select37" data-hint="" required>
+              <select id="paymentMethod" name="paymentMethod" data-hint="" required>
                 <option id="item37_0_option" value="" selected>
                   maak uw keuze
                 </option>
