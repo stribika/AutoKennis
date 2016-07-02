@@ -3,6 +3,7 @@ using System.Data.Common;
 using System.Collections.Generic;
 using System.IO;
 using System.Runtime.Serialization.Json;
+using System.Data.SqlClient;
 
 namespace AutoKennisWeb {
 	public sealed class FormDAO: IFormDAO {
@@ -18,7 +19,7 @@ namespace AutoKennisWeb {
 			Json = new DataContractJsonSerializer(new FormDTO().GetType());
 		}
 
-		public void saveAankoopBegeleidingForm(FormDTO form) {
+		public void saveAankoopBegeleidingForm(FormDTOExtended form) {
 			using (var connection = Provider.CreateConnection()) {
 				connection.ConnectionString = ConnectionString;
 				connection.Open();
@@ -49,7 +50,7 @@ namespace AutoKennisWeb {
 			}
 		}
 
-        public void saveAankoopKeuringForm(FormDTO form)
+        public void saveAankoopKeuringForm(FormDTOExtended form)
         {
             using (var connection = Provider.CreateConnection())
             {
@@ -187,7 +188,59 @@ namespace AutoKennisWeb {
             }
         }
 
+        public List<FormDTO> LoadFormDTO(string selectedTable)
+        {
+            List<FormDTO> formRequests = new List<FormDTO>();
+
+            using (var conn = Provider.CreateConnection())
+            {
+                conn.ConnectionString = ConnectionString;
+                conn.Open();
+                using (var command = new SqlCommand())
+                {
+                    command.CommandText = $"SELECT attrs FROM {selectedTable} WHERE SENT = @false";
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+
+                            formRequests.Add((FormDTO)Json.ReadObject(reader.GetStream(reader.GetOrdinal("attrs"))));
+                        }
+                    }
+                }
+            }
+            return formRequests;
+        }
 
 
+        public List<FormDTOExtended> LoadFormDTOExtended(string selectedTable)
+        {
+            List<FormDTOExtended> formRequests = new List<FormDTOExtended>();
+
+            using (var conn = Provider.CreateConnection())
+            {
+                conn.ConnectionString = ConnectionString;
+                conn.Open();
+                using (var command = new SqlCommand())
+                {
+                    command.CommandText = $"SELECT attrs FROM {selectedTable} WHERE SENT = @false";
+
+                    SqlDataReader reader = command.ExecuteReader();
+
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+
+                            formRequests.Add((FormDTOExtended)Json.ReadObject(reader.GetStream(reader.GetOrdinal("attrs"))));
+                        }
+                    }
+                }
+            }
+            return formRequests;
+        }
     }
 }

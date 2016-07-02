@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace AutoKennisWeb {
 	public interface IFormDAO {
-		void saveAankoopBegeleidingForm(FormDTO form);
-        void saveAankoopKeuringForm(FormDTO form);
+		void saveAankoopBegeleidingForm(FormDTOExtended form);
+        void saveAankoopKeuringForm(FormDTOExtended form);
         void saveAutoAdviesForm(FormDTO form);
         void saveGarantieKeuringForm(FormDTO form);
         void saveReparatieKeuringForm(FormDTO form);

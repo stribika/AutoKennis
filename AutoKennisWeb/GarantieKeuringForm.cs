@@ -32,7 +32,19 @@ namespace AutoKennisWeb {
 
 
             AppConfig.Instance.FormDAO.saveGarantieKeuringForm(form);
-		}
+
+            //És kuldjon emailt is
+
+            EmailSender emailSender = new EmailSender();
+            List<string> bodies = emailSender.BodyBuilderFormDTO("Garantie-Keuring", "GarantieKeuring");
+            
+            foreach (string body in bodies)
+            {
+                emailSender.GarantieKeuringMailSend("smtp.gmail.com", emailSender.SetEmailAddresses(), body);
+            }
+
+            // Meg visszaigazoljon
+        }
 	}
 }
 

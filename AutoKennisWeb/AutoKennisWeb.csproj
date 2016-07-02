@@ -93,7 +93,10 @@
     <Compile Include="AutoAdvies.aspx.designer.cs">
       <DependentUpon>AutoAdvies.aspx</DependentUpon>
     </Compile>
+    <Compile Include="EmailSender.cs" />
     <Compile Include="FormDTO.cs" />
+    <Compile Include="FormDTOExtended.cs" />
+    <Compile Include="NLNameAttribute.cs" />
     <Compile Include="ReparatieKeuring.aspx.designer.cs">
       <DependentUpon>ReparatieKeuring.aspx</DependentUpon>
     </Compile>
