@@ -198,7 +198,7 @@ namespace AutoKennisWeb {
                 conn.Open();
                 using (var command = new SqlCommand())
                 {
-                    command.CommandText = $"SELECT attrs FROM {selectedTable} WHERE SENT = @false";
+                    command.CommandText = $"SELECT id, attrs FROM {selectedTable} WHERE SENT = false"; 
 
                     SqlDataReader reader = command.ExecuteReader();
 
@@ -206,8 +206,9 @@ namespace AutoKennisWeb {
                     {
                         while (reader.Read())
                         {
-
-                            formRequests.Add((FormDTO)Json.ReadObject(reader.GetStream(reader.GetOrdinal("attrs"))));
+                            var formDTO = (FormDTO)Json.ReadObject(reader.GetStream(reader.GetOrdinal("attrs")));
+                            formDTO.id = reader.GetInt64(reader.GetOrdinal("id"));
+                            formRequests.Add(formDTO);
                         }
                     }
                 }

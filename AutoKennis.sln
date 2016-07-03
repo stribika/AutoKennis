@@ -1,14 +1,16 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoKennisWeb", "AutoKennisWeb\AutoKennisWeb.csproj", "{BAAF3283-A1FB-4FC2-ABA7-D370DEF89F4B}"
-EndProject
+# Visual Studio 14
+VisualStudioVersion = 14.0.24720.0
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{08C4430C-B785-4359-AD08-C0862079BD70}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
 		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoKennisWeb", "AutoKennisWeb\AutoKennisWeb.csproj", "{BAAF3283-A1FB-4FC2-ABA7-D370DEF89F4B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AdminPortal", "AdminPortal\AdminPortal.csproj", "{3BA87103-43D3-43E5-92AC-2F05B93CE93E}"
 EndProject
@@ -18,48 +20,43 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{3BA87103-43D3-43E5-92AC-2F05B93CE93E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3BA87103-43D3-43E5-92AC-2F05B93CE93E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3BA87103-43D3-43E5-92AC-2F05B93CE93E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3BA87103-43D3-43E5-92AC-2F05B93CE93E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BAAF3283-A1FB-4FC2-ABA7-D370DEF89F4B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{BAAF3283-A1FB-4FC2-ABA7-D370DEF89F4B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAAF3283-A1FB-4FC2-ABA7-D370DEF89F4B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAAF3283-A1FB-4FC2-ABA7-D370DEF89F4B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BA87103-43D3-43E5-92AC-2F05B93CE93E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BA87103-43D3-43E5-92AC-2F05B93CE93E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BA87103-43D3-43E5-92AC-2F05B93CE93E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BA87103-43D3-43E5-92AC-2F05B93CE93E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
-	GlobalSection(NestedProjects) = preSolution
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(MonoDevelopProperties) = preSolution
 		Policies = $0
 		$0.VersionControlPolicy = $1
 		$1.inheritsSet = Mono
-		$0.TextStylePolicy = $2
+		$0.TextStylePolicy = $12
 		$2.inheritsSet = null
 		$2.scope = application/x-aspx
-		$0.TextStylePolicy = $3
 		$3.FileWidth = 120
 		$3.TabsToSpaces = False
 		$3.EolMarker = Unix
 		$3.inheritsSet = VisualStudio
 		$3.inheritsScope = text/plain
 		$3.scope = text/plain
-		$0.TextStylePolicy = $4
 		$4.inheritsSet = null
 		$4.scope = application/x-asax
-		$0.TextStylePolicy = $5
 		$5.inheritsSet = null
 		$5.scope = application/config+xml
-		$0.XmlFormattingPolicy = $6
+		$0.XmlFormattingPolicy = $8
 		$6.inheritsSet = null
 		$6.scope = application/config+xml
-		$0.TextStylePolicy = $7
 		$7.inheritsSet = null
 		$7.scope = application/xml
-		$0.XmlFormattingPolicy = $8
 		$8.inheritsSet = Mono
 		$8.inheritsScope = application/xml
 		$8.scope = application/xml
-		$0.TextStylePolicy = $9
 		$9.FileWidth = 120
 		$9.TabsToSpaces = False
 		$9.EolMarker = Unix
@@ -101,10 +98,8 @@ Global
 		$10.inheritsSet = Mono
 		$10.inheritsScope = text/x-csharp
 		$10.scope = text/x-csharp
-		$0.TextStylePolicy = $11
 		$11.inheritsSet = null
 		$11.scope = text/html
-		$0.TextStylePolicy = $12
 		$12.inheritsSet = null
 		$12.scope = application/x-ashx
 	EndGlobalSection

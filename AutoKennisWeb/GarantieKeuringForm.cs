@@ -34,13 +34,16 @@ namespace AutoKennisWeb {
             AppConfig.Instance.FormDAO.saveGarantieKeuringForm(form);
 
             //És kuldjon emailt is
+            string selectedTable = "GarantieKeuringForm";
+            string formtype = "Garantie-Keuring";
+            string server = "mail.auto-kennis.nl";
 
             EmailSender emailSender = new EmailSender();
-            List<string> bodies = emailSender.BodyBuilderFormDTO("Garantie-Keuring", "GarantieKeuring");
+            List<FormDTO> formDTOList = AppConfig.Instance.FormDAO.LoadFormDTO(selectedTable);
             
-            foreach (string body in bodies)
+            foreach (FormDTO currentForm in formDTOList)
             {
-                emailSender.GarantieKeuringMailSend("smtp.gmail.com", emailSender.SetEmailAddresses(), body);
+                emailSender.EmailStateSetter(emailSender.MailSend(server, emailSender.SetEmailAddresses(), emailSender.BodyBuilderFormDTO(formtype, currentForm), formtype), selectedTable, currentForm.id); // EMAIL SERVERT TESZTELESHEZ BEALLITANI
             }
 
             // Meg visszaigazoljon

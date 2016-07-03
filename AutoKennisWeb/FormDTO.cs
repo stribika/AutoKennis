@@ -84,6 +84,9 @@ namespace AutoKennisWeb
         [NLNameAttribute("Gevenste wijze van betalen:")]
         public string PaymentMethod { get; set; }
 
+        [IgnoreDataMember]
+        public long id { get; set; }
+
         //Klik hier om u akkoord te verklaren met de algemene voorwaarden van Auto-Kennis*:
         //Submitted On:    datum
         //IP Address:
