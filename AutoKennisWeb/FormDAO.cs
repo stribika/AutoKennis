@@ -13,10 +13,10 @@ namespace AutoKennisWeb {
 
 		private DataContractJsonSerializer Json { get; set; }
 
-		public FormDAO(string connectionString, DbProviderFactory provider) {
+		public FormDAO(string connectionString, DbProviderFactory provider, DataContractJsonSerializer json) {
 			ConnectionString = connectionString;
 			Provider = provider;
-			Json = new DataContractJsonSerializer(new FormDTO().GetType());
+            Json = json;
 		}
 
 		public void saveAankoopBegeleidingForm(FormDTOExtended form) {
@@ -196,17 +196,23 @@ namespace AutoKennisWeb {
             {
                 conn.ConnectionString = ConnectionString;
                 conn.Open();
-                using (var command = new SqlCommand())
+                using (var command = Provider.CreateCommand())
                 {
-                    command.CommandText = $"SELECT id, attrs FROM {selectedTable} WHERE SENT = false"; 
+                    command.Connection = conn;
+                    command.CommandText = $"SELECT id, attrs FROM {selectedTable} WHERE sent = false"; 
 
-                    SqlDataReader reader = command.ExecuteReader();
+                    var reader = command.ExecuteReader();
 
                     if (reader.HasRows)
                     {
                         while (reader.Read())
                         {
-                            var formDTO = (FormDTO)Json.ReadObject(reader.GetStream(reader.GetOrdinal("attrs")));
+                            var memstream = new MemoryStream();
+                            var writer = new StreamWriter(memstream);
+                            writer.Write(reader.GetString(reader.GetOrdinal("attrs")));
+                            writer.Flush();
+                            memstream.Position = 0;
+                            var formDTO = (FormDTO)Json.ReadObject(memstream);
                             formDTO.id = reader.GetInt64(reader.GetOrdinal("id"));
                             formRequests.Add(formDTO);
                         }
@@ -243,5 +249,57 @@ namespace AutoKennisWeb {
             }
             return formRequests;
         }
+
+        public List<string> SetEmailAddresses()
+        {
+            List<string> addresses = new List<string>();
+            using (var conn = Provider.CreateConnection())
+            {
+                conn.ConnectionString = ConnectionString;
+                conn.Open();
+                using (var command = Provider.CreateCommand())
+                {
+                    command.Connection = conn;
+                    command.CommandText = "SELECT EMAIL FROM EMAILRECEIVERS"; //ide most kellenek parameterek?
+
+                    var reader = command.ExecuteReader();
+                    if (reader.HasRows)
+                    {
+                        while (reader.Read())
+                        {
+                            addresses.Add(reader.GetString(reader.GetOrdinal("email")));
+                        }
+                    }
+                }
+            }
+            return addresses;
+        }
+
+        public void EmailStateSetter(bool isSent, string selectedTable, long ID)
+        {
+            using (var connection = Provider.CreateConnection())
+            {
+                connection.ConnectionString = ConnectionString;
+                connection.Open();
+                using (var command = Provider.CreateCommand())
+                {
+                    command.Connection = connection;
+                    command.CommandText = $"UPDATE {selectedTable} SET sent = @sent WHERE id = @id";
+
+                    var sent = Provider.CreateParameter();
+                    sent.Value = isSent;
+                    sent.ParameterName = "@sent";
+                    command.Parameters.Add(sent);
+
+                    var id = Provider.CreateParameter();
+                    id.Value = ID;
+                    id.ParameterName = "@id";
+                    command.Parameters.Add(id);
+
+                    command.ExecuteNonQuery();
+                }
+            }
+        }
+
     }
 }

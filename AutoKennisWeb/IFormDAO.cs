@@ -11,5 +11,7 @@ namespace AutoKennisWeb {
         List<FormDTO> LoadFormDTO(string selectedTable);
         List<FormDTOExtended> LoadFormDTOExtended(string selectedTable);
         //serial, int, jasonb
+        void EmailStateSetter(bool isSent, string selectedTable, long ID);
+        List<string> SetEmailAddresses();
     }
 }

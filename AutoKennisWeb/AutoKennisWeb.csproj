@@ -96,6 +96,9 @@
     <Compile Include="EmailSender.cs" />
     <Compile Include="FormDTO.cs" />
     <Compile Include="FormDTOExtended.cs" />
+    <Compile Include="KeuringFormBaseClass.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="NLNameAttribute.cs" />
     <Compile Include="ReparatieKeuring.aspx.designer.cs">
       <DependentUpon>ReparatieKeuring.aspx</DependentUpon>
