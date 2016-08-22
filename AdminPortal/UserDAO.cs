@@ -19,7 +19,7 @@ namespace AdminPortal {
 
 				using (var command = Provider.CreateCommand()) {
 					command.Connection = connection;
-					command.CommandText = "insert into User (Name, PasswordSalt, PasswordHash) values (@Name, @PasswordSalt, @PasswordHash)";
+					command.CommandText = "insert into RegisteredUser (Name, PasswordSalt, PasswordHash) values (@Name, @PasswordSalt, @PasswordHash)";
 					Param(command, "Name", user.Name);
 					Param(command, "PasswordSalt", user.PasswordSalt);
 					Param(command, "PasswordHash", user.PasswordHash);
@@ -35,7 +35,7 @@ namespace AdminPortal {
 
 				using (var command = Provider.CreateCommand()) {
 					command.Connection = connection;
-					command.CommandText = "select PasswordSalt, PasswordHash from User where Name = @Name";
+					command.CommandText = "select PasswordSalt, PasswordHash from RegisteredUser where Name = @Name";
 					Param(command, "Name", username);
 
 					using (var reader = command.ExecuteReader()) {

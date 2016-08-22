@@ -9,7 +9,7 @@ namespace AdminPortal {
 		private readonly object sync = new object();
 
 		public string DatabaseConnectionString {
-			get { return "Host=localhost;Username=AutoKennis;Database=AutoKennis"; }
+			get { return "Host=localhost;Username=autokennis;Database=autokennis"; }
 		}
 
 		public DbProviderFactory DatabaseProvider {

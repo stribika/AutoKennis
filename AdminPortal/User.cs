@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using CryptSharp.Utility;
@@ -26,8 +27,7 @@ namespace AdminPortal {
 				csprng.GetBytes(PasswordSalt);
 			}
 
-			var passwordBytes = Encoding.UTF8.GetBytes(password);
-			PasswordHash = SCrypt.ComputeDerivedKey(passwordBytes, PasswordSalt, 128, 8, 4, 4, PasswordHashLength);
+			PasswordHash = CalculateHash(password);
 		}
 
 		public User(string name, byte[] passwordSalt, byte[] passwordHash) {
@@ -59,8 +59,12 @@ namespace AdminPortal {
 		}
 
 		public bool Validate(string password) {
+			return Enumerable.SequenceEqual(PasswordHash, CalculateHash(password));
+		}
+
+		private byte[] CalculateHash(string password) {
 			var passwordBytes = Encoding.UTF8.GetBytes(password);
-			return PasswordHash.Equals(SCrypt.ComputeDerivedKey(passwordBytes, PasswordSalt, 128, 8, 4, 4, PasswordHashLength));
+			return SCrypt.ComputeDerivedKey (passwordBytes, PasswordSalt, 128, 8, 4, 4, PasswordHashLength);
 		}
 	}
 }
