@@ -84,6 +84,10 @@ namespace AutoKennisWeb
         [NLNameAttribute("Gevenste wijze van betalen:")]
         public string PaymentMethod { get; set; }
 
+        [DataMember(EmitDefaultValue = false)]
+        [NLNameAttribute("IP Address:")]
+        public string IpAddress { get; set; }
+
         [IgnoreDataMember]
         public long id { get; set; }
 

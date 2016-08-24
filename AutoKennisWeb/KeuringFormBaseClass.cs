@@ -49,6 +49,7 @@ namespace AutoKennisWeb
             form.CarPostcode = Request.Form.Get("carPostcode");
             form.Comments = Request.Form.Get("comments");
             form.PaymentMethod = Request.Form.Get("paymentMethod");
+            form.IpAddress = Request.UserHostAddress;
 
             return form;
         }

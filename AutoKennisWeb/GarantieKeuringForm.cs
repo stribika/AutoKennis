@@ -32,6 +32,7 @@ namespace AutoKennisWeb {
             SendOutMail(selectedTable, formtype);
 
             // Meg visszaigazoljon
+            Response.Redirect("/confirmation.htm");
         }
 	}
 }
