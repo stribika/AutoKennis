@@ -4,7 +4,7 @@ using System.Security.Cryptography;
 using System.Text;
 using CryptSharp.Utility;
 
-namespace AdminPortal {
+namespace AutoKennis {
 	public class User {
 		public const int PasswordSaltLength = 16;
 

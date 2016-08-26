@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace AutoKennisWeb {
+namespace AutoKennis {
 	public interface IFormDAO {
 		void saveAankoopBegeleidingForm(FormDTOExtended form);
         void saveAankoopKeuringForm(FormDTOExtended form);

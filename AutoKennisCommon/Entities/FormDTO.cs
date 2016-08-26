@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace AutoKennisWeb
+namespace AutoKennis
 {
     [DataContract]
     public class FormDTO
@@ -14,6 +14,7 @@ namespace AutoKennisWeb
 
         [DataMember(EmitDefaultValue = false)]
         [NLNameAttribute("Uw Naam*:")]
+		[SummaryTable]
         public string Fullname { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
@@ -50,31 +51,38 @@ namespace AutoKennisWeb
 
         [DataMember(EmitDefaultValue = false)]
         [NLNameAttribute("Merk*:")]
-        public string CarBrand { get; set; }
+		[SummaryTable]
+		public string CarBrand { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         [NLNameAttribute("Type*:")]
-        public string CarModel { get; set; }
+		[SummaryTable]
+		public string CarModel { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         [NLNameAttribute("Kenteken*:")]
-        public string CarLicencePlate { get; set; }
+		[SummaryTable]
+		public string CarLicencePlate { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         [NLNameAttribute("Bouwjaar*:")]
-        public string CarYear { get; set; }
+		[SummaryTable]
+		public string CarYear { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         [NLNameAttribute("Adres Auto*:")]
-        public string CarAddress { get; set; }
+		[SummaryTable]
+		public string CarAddress { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         [NLNameAttribute("Woonplaats*:")]
-        public string CarCity { get; set; }
+		[SummaryTable]
+		public string CarCity { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         [NLNameAttribute("Postcode*:")]
-        public string CarPostcode { get; set; }
+		[SummaryTable]
+		public string CarPostcode { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
         [NLNameAttribute("Eventuele aanvullende gegevens kunt u hier invullen:")]

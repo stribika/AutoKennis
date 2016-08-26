@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AdminPortal {
+namespace AutoKennis {
 	public interface IUserDAO {
 		void AddUser(User user);
 		User GetUser(string name);

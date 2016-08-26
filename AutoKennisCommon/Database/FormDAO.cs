@@ -5,7 +5,7 @@ using System.IO;
 using System.Runtime.Serialization.Json;
 using System.Data.SqlClient;
 
-namespace AutoKennisWeb {
+namespace AutoKennis {
 	public sealed class FormDAO: IFormDAO {
 		private DbProviderFactory Provider { get; set; }
 

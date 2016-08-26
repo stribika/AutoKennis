@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Data.Common;
 
-namespace AdminPortal {
+namespace AutoKennis {
 	public class UserDAO: IUserDAO {
 		private readonly string ConnectionString;
 

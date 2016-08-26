@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Serialization;
 using System.Web;
 
-namespace AutoKennisWeb
+namespace AutoKennis
 {
     [DataContract]
     public class FormDTOExtended : FormDTO

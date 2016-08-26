@@ -48,6 +48,7 @@
     <Compile Include="Attributes\NLNameAttribute.cs" />
     <Compile Include="Database\FormDAO.cs" />
     <Compile Include="Database\IFormDAO.cs" />
+    <Compile Include="Attributes\SummaryTableAttribute.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />
