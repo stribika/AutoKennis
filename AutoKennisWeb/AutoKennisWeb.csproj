@@ -66,6 +66,7 @@
     <Content Include="AutoAdvies.aspx" />
     <Content Include="ReparatieKeuring.aspx" />
     <Content Include="Global.asax" />
+    <Content Include="site.css" />
     <Content Include="web.config" />
     <Content Include="Default.aspx" />
     <Content Include="GarantieKeuringForm.aspx" />
@@ -128,6 +129,9 @@
     <Compile Include="IFormDAO.cs" />
     <Compile Include="FormDAO.cs" />
     <Compile Include="AppConfig.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="WS_FTP.LOG" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

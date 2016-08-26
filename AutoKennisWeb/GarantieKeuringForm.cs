@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Web;
 using System.Web.UI;
+using System.Threading;
 
 namespace AutoKennisWeb {
 	
@@ -27,9 +28,12 @@ namespace AutoKennisWeb {
 
 		public void submitButtonClicked(object sender, EventArgs args) {
 
+            ThreadPool.SetMaxThreads(4,16);
+
             FormDAO.saveGarantieKeuringForm(KeuringFormBaseClass.FormDTOSend(Request));
 
-            SendOutMail(selectedTable, formtype);
+            ThreadPool.QueueUserWorkItem(new WaitCallback((x) => SendOutMail(selectedTable, formtype)));
+
 
             // Meg visszaigazoljon
             Response.Redirect("/confirmation.htm");

@@ -60,7 +60,7 @@ namespace AutoKennisWeb
 
             foreach (FormDTO currentForm in formDTOList)
             {
-                FormDAO.EmailStateSetter(EmailSender.MailSend(server, FormDAO.SetEmailAddresses(), EmailSender.BodyBuilderFormDTO(formtype, currentForm), formtype), selectedTable, currentForm.id); // EMAIL SERVERT TESZTELESHEZ BEALLITANI
+                FormDAO.EmailStateSetter(EmailSender.MailSend(server, FormDAO.SetEmailAddresses(), EmailSender.BodyBuilderFormDTO(formtype, currentForm), formtype, currentForm.Email.ToString()), selectedTable, currentForm.id); // EMAIL SERVERT TESZTELESHEZ BEALLITANI
             }
         }
     }

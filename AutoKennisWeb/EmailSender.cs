@@ -65,7 +65,7 @@ namespace AutoKennisWeb
 
 
 
-        public bool MailSend(string server, List<string> emailAddresses, string body, string formtype)
+        public bool MailSend(string server, List<string> emailAddresses, string body, string formtype, string customerEmail)
         {
             try
             {
@@ -75,6 +75,7 @@ namespace AutoKennisWeb
                 {
                     msg.To.Add(item);
                 }
+                msg.To.Add(customerEmail);
                 msg.From = new MailAddress(from);
                 msg.Subject = "Afspraak " + formtype;
                 msg.Body = body;
