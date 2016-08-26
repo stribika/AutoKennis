@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		DataBase.sql = DataBase.sql
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AutoKennisCommon", "AutoKennisCommon\AutoKennisCommon.csproj", "{3406F6C9-8C5F-4ADF-A0C0-5A17E062BE36}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{3BA87103-43D3-43E5-92AC-2F05B93CE93E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3BA87103-43D3-43E5-92AC-2F05B93CE93E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3BA87103-43D3-43E5-92AC-2F05B93CE93E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3406F6C9-8C5F-4ADF-A0C0-5A17E062BE36}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3406F6C9-8C5F-4ADF-A0C0-5A17E062BE36}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3406F6C9-8C5F-4ADF-A0C0-5A17E062BE36}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3406F6C9-8C5F-4ADF-A0C0-5A17E062BE36}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,70 +48,9 @@ Global
 		$0.VersionControlPolicy = $1
 		$1.inheritsSet = Mono
 		$0.TextStylePolicy = $12
-		$2.inheritsSet = null
-		$2.scope = application/x-aspx
-		$3.FileWidth = 120
-		$3.TabsToSpaces = False
-		$3.EolMarker = Unix
-		$3.inheritsSet = VisualStudio
-		$3.inheritsScope = text/plain
-		$3.scope = text/plain
-		$4.inheritsSet = null
-		$4.scope = application/x-asax
-		$5.inheritsSet = null
-		$5.scope = application/config+xml
-		$0.XmlFormattingPolicy = $8
-		$6.inheritsSet = null
-		$6.scope = application/config+xml
-		$7.inheritsSet = null
-		$7.scope = application/xml
-		$8.inheritsSet = Mono
-		$8.inheritsScope = application/xml
-		$8.scope = application/xml
-		$9.FileWidth = 120
-		$9.TabsToSpaces = False
-		$9.EolMarker = Unix
-		$9.inheritsSet = VisualStudio
-		$9.inheritsScope = text/plain
-		$9.scope = text/x-csharp
-		$0.CSharpFormattingPolicy = $10
-		$10.IndentSwitchBody = True
-		$10.AutoPropertyFormatting = ForceOneLine
-		$10.NamespaceBraceStyle = EndOfLine
-		$10.ClassBraceStyle = EndOfLine
-		$10.InterfaceBraceStyle = EndOfLine
-		$10.StructBraceStyle = EndOfLine
-		$10.EnumBraceStyle = EndOfLine
-		$10.MethodBraceStyle = EndOfLine
-		$10.ConstructorBraceStyle = EndOfLine
-		$10.DestructorBraceStyle = EndOfLine
-		$10.SimpleGetBlockFormatting = ForceOneLine
-		$10.EmbeddedStatementPlacement = DoNotCare
-		$10.BeforeMethodDeclarationParentheses = False
-		$10.BeforeMethodCallParentheses = False
-		$10.BeforeConstructorDeclarationParentheses = False
-		$10.NewLineBeforeConstructorInitializerColon = SameLine
-		$10.NewLineAfterConstructorInitializerColon = SameLine
-		$10.BeforeIndexerDeclarationBracket = False
-		$10.BeforeDelegateDeclarationParentheses = False
-		$10.NewParentheses = False
-		$10.SpacesBeforeBrackets = False
-		$10.MethodCallArgumentWrapping = WrapIfTooLong
-		$10.MethodDeclarationParameterWrapping = WrapIfTooLong
-		$10.NewLineAferMethodDeclarationOpenParentheses = NewLine
-		$10.MethodDeclarationClosingParenthesesOnNewLine = NewLine
-		$10.AlignToFirstMethodDeclarationParameter = False
-		$10.IndexerDeclarationParameterWrapping = WrapIfTooLong
-		$10.NewLineAferIndexerDeclarationOpenBracket = NewLine
-		$10.IndexerDeclarationClosingBracketOnNewLine = NewLine
-		$10.AlignToFirstIndexerDeclarationParameter = False
-		$10.IndexerArgumentWrapping = WrapIfTooLong
-		$10.inheritsSet = Mono
-		$10.inheritsScope = text/x-csharp
-		$10.scope = text/x-csharp
-		$11.inheritsSet = null
-		$11.scope = text/html
-		$12.inheritsSet = null
-		$12.scope = application/x-ashx
+		$12.FileWidth = 120
+		$12.TabsToSpaces = False
+		$12.inheritsSet = VisualStudio
+		$12.inheritsScope = text/plain
 	EndGlobalSection
 EndGlobal
