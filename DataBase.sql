@@ -113,3 +113,9 @@ WITH (
 );
 ALTER TABLE public.reparatiekeuringform
   OWNER TO postgres;
+
+create table RegisteredUser (
+	Name text not null constraint UserPk primary key,
+	PasswordSalt bytea not null,
+	PasswordHash bytea not null
+);
