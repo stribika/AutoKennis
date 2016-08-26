@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Runtime.Serialization.Json;
+using AutoKennis;
 
 namespace AutoKennisWeb {
 	public class AppConfig {

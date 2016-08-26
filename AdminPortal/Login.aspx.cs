@@ -2,6 +2,7 @@
 using System.Web;
 using System.Web.Security;
 using System.Web.UI;
+using AutoKennis;
 
 namespace AdminPortal {
 	public partial class Login : System.Web.UI.Page {

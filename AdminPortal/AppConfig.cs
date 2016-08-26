@@ -2,7 +2,7 @@
 using System;
 using System.Data.Common;
 
-namespace AdminPortal {
+namespace AutoKennis {
 	public class AppConfig {
 		public static AppConfig Instance { get; private set; } = new AppConfig();
 

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web;
 using System.Web.UI;
+using AutoKennis;
 
 namespace AutoKennisWeb {
 	

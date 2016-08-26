@@ -9,6 +9,7 @@ using System.Net.Mail;
 using System.Reflection;
 using System.Runtime.Serialization.Json;
 using System.Web;
+using AutoKennis;
 
 namespace AutoKennisWeb
 {
