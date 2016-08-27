@@ -66,7 +66,7 @@ namespace AutoKennisWeb
 
 
 
-        public bool MailSend(string server, List<string> emailAddresses, string body, string formtype, string customerEmail)
+        public bool MailSend(string server, IList<string> emailAddresses, string body, string formtype, string customerEmail)
         {
             try
             {
