@@ -25,9 +25,9 @@ namespace AutoKennisWeb
             Json = jsonSerializer;
         }
 
-        public string BodyBuilderFormDTO(string formtype, FormDTO formDTO)
+        public string BodyBuilderFormDTO(FormDTO formDTO)
         {
-            string body = $"De volgende aanvraag {formtype} werd ingediend,{Environment.NewLine}{Environment.NewLine}Gegevens:{Environment.NewLine}";
+			string body = $"De volgende aanvraag {formDTO.Type.GetDescription()} werd ingediend,{Environment.NewLine}{Environment.NewLine}Gegevens:{Environment.NewLine}";
 
 
             PropertyInfo[] properties = typeof(FormDTO).GetProperties();

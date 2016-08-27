@@ -4,10 +4,10 @@ using System.Web.UI;
 using AutoKennis;
 
 namespace AutoKennisWeb {
-	
 	public partial class AutoAdvies : System.Web.UI.Page {
 		public void submitButtonClicked(object sender, EventArgs args) {
             var form = new FormDTO();
+			form.Type = FormType.AutoAdvises;
             form.Fullname = Request.Form.Get("fullname");
             form.Address = Request.Form.Get("address");
             form.Postcode = Request.Form.Get("postcode");
@@ -28,7 +28,7 @@ namespace AutoKennisWeb {
             form.Comments = Request.Form.Get("comments");
             form.PaymentMethod = Request.Form.Get("paymentMethod");
 
-            AppConfig.Instance.FormDAO.saveAutoAdviesForm(form);
+			AppConfig.Instance.FormDAO.SaveForm(form);
         }
 	}
 }

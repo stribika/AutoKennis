@@ -48,7 +48,11 @@
     <Compile Include="Attributes\NLNameAttribute.cs" />
     <Compile Include="Database\FormDAO.cs" />
     <Compile Include="Database\IFormDAO.cs" />
-    <Compile Include="Attributes\SummaryTableAttribute.cs" />
+    <Compile Include="Entities\FormType.cs" />
+    <Compile Include="Entities\FormStatus.cs" />
+    <Compile Include="Attributes\DescriptionAttribute.cs" />
+    <Compile Include="Attributes\AttributeExtensions.cs" />
+    <Compile Include="Database\DatabaseExtensions.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Entities\" />

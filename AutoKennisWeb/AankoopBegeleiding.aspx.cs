@@ -4,11 +4,12 @@ using System.Web.UI;
 using AutoKennis;
 
 namespace AutoKennisWeb {
-	
 	public partial class AankoopBegeleiding : System.Web.UI.Page {
 		public void submitButtonClicked(object sender, EventArgs args) {
             var form = new FormDTOExtended();
-            form.Fullname = Request.Form.Get("fullname");
+            form.Type = FormType.AnkoopBegeleiding;
+
+			form.Fullname = Request.Form.Get("fullname");
             form.Address = Request.Form.Get("address");
             form.Postcode = Request.Form.Get("postcode");
             form.City = Request.Form.Get("city");
@@ -32,9 +33,7 @@ namespace AutoKennisWeb {
             form.SellerType = Request.Form.Get("sellerType");
             form.CarPrice = Request.Form.Get("carPrice");
 
-
-            AppConfig.Instance.FormDAO.saveAankoopBegeleidingForm(form);
+            AppConfig.Instance.FormDAO.SaveForm(form);
         }
 	}
 }
-

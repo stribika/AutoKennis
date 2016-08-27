@@ -19,178 +19,30 @@ namespace AutoKennis {
             Json = json;
 		}
 
-		public void saveAankoopBegeleidingForm(FormDTOExtended form) {
-			using (var connection = Provider.CreateConnection()) {
-				connection.ConnectionString = ConnectionString;
-				connection.Open();
-				using (var command = Provider.CreateCommand()) {
-					command.Connection = connection;
-					command.CommandText = "insert into AankoopBegeleidingForm (VERSION, ATTRS) values (@V, @A::json)";
-
-					//var formId = Provider.CreateParameter();
-					//formId.Value = id;
-					//command.Parameters.Add(formId);
-
-					var version = Provider.CreateParameter();
-					version.Value = 0;
-                    version.ParameterName = "@V";
-					command.Parameters.Add(version);
-
-					var attrs = Provider.CreateParameter();
+        public void SaveForm(FormDTO form)
+        {
+            using (var connection = Provider.CreateConnection())
+            {
+                connection.ConnectionString = ConnectionString;
+                connection.Open();
+                using (var command = Provider.CreateCommand())
+                {
+                    command.Connection = connection;
+					command.CommandText = $"insert into {form.Type.GetTableName()} (VERSION, ATTRS) values (@V, @A::json)";
+					command.SetParameter("V", 0);
 					var memstream = new MemoryStream();
 					Json.WriteObject(memstream, form);
-                    memstream.Position = 0;
+					memstream.Position = 0;
 					var reader = new StreamReader(memstream);
-					attrs.Value = reader.ReadToEnd();
-                    attrs.ParameterName = "@A";
-					command.Parameters.Add(attrs);
-
-					command.ExecuteNonQuery();
-				}
-			}
-		}
-
-        public void saveAankoopKeuringForm(FormDTOExtended form)
-        {
-            using (var connection = Provider.CreateConnection())
-            {
-                connection.ConnectionString = ConnectionString;
-                connection.Open();
-                using (var command = Provider.CreateCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandText = "insert into AankoopKeuringForm (VERSION, ATTRS) values (@V, @A::json)";
-
-                    //var formId = Provider.CreateParameter();
-                    //formId.Value = id;
-                    //command.Parameters.Add(formId);
-
-                    var version = Provider.CreateParameter();
-                    version.Value = 0;
-                    version.ParameterName = "@V";
-                    command.Parameters.Add(version);
-
-                    var attrs = Provider.CreateParameter();
-                    var memstream = new MemoryStream();
-                    Json.WriteObject(memstream, form);
-                    memstream.Position = 0;
-                    var reader = new StreamReader(memstream);
-                    attrs.Value = reader.ReadToEnd();
-                    attrs.ParameterName = "@A";
-                    command.Parameters.Add(attrs);
-
+					command.SetParameter("A", reader.ReadToEnd());
                     command.ExecuteNonQuery();
                 }
             }
         }
 
-        public void saveAutoAdviesForm(FormDTO form)
+		public IList<T> LoadUnsentForms<T>(FormType formType) where T: FormDTO
         {
-            using (var connection = Provider.CreateConnection())
-            {
-                connection.ConnectionString = ConnectionString;
-                connection.Open();
-                using (var command = Provider.CreateCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandText = "insert into AutoAdviesForm (VERSION, ATTRS) values (@V, @A::json)";
-
-                    //var formId = Provider.CreateParameter();
-                    //formId.Value = id;
-                    //command.Parameters.Add(formId);
-
-                    var version = Provider.CreateParameter();
-                    version.Value = 0;
-                    version.ParameterName = "@V";
-                    command.Parameters.Add(version);
-
-                    var attrs = Provider.CreateParameter();
-                    var memstream = new MemoryStream();
-                    Json.WriteObject(memstream, form);
-                    memstream.Position = 0;
-                    var reader = new StreamReader(memstream);
-                    attrs.Value = reader.ReadToEnd();
-                    attrs.ParameterName = "@A";
-                    command.Parameters.Add(attrs);
-
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-
-
-        public void saveGarantieKeuringForm(FormDTO form)
-        {
-            using (var connection = Provider.CreateConnection())
-            {
-                connection.ConnectionString = ConnectionString;
-                connection.Open();
-                using (var command = Provider.CreateCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandText = "insert into GarantieKeuringForm (VERSION, ATTRS) values (@V, @A::json)";
-
-                    //var formId = Provider.CreateParameter();
-                    //formId.Value = id;
-                    //command.Parameters.Add(formId);
-
-                    var version = Provider.CreateParameter();
-                    version.Value = 0;
-                    version.ParameterName = "@V";
-                    command.Parameters.Add(version);
-
-                    var attrs = Provider.CreateParameter();
-                    var memstream = new MemoryStream();
-                    Json.WriteObject(memstream, form);
-                    memstream.Position = 0;
-                    var reader = new StreamReader(memstream);
-                    attrs.Value = reader.ReadToEnd();
-                    attrs.ParameterName = "@A";
-                    command.Parameters.Add(attrs);
-
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-
-
-        public void saveReparatieKeuringForm(FormDTO form)
-        {
-            using (var connection = Provider.CreateConnection())
-            {
-                connection.ConnectionString = ConnectionString;
-                connection.Open();
-                using (var command = Provider.CreateCommand())
-                {
-                    command.Connection = connection;
-                    command.CommandText = "insert into ReparatieKeuringForm (VERSION, ATTRS) values (@V, @A::json)";
-
-                    //var formId = Provider.CreateParameter();
-                    //formId.Value = id;
-                    //command.Parameters.Add(formId);
-
-                    var version = Provider.CreateParameter();
-                    version.Value = 0;
-                    version.ParameterName = "@V";
-                    command.Parameters.Add(version);
-
-                    var attrs = Provider.CreateParameter();
-                    var memstream = new MemoryStream();
-                    Json.WriteObject(memstream, form);
-                    memstream.Position = 0;
-                    var reader = new StreamReader(memstream);
-                    attrs.Value = reader.ReadToEnd();
-                    attrs.ParameterName = "@A";
-                    command.Parameters.Add(attrs);
-
-                    command.ExecuteNonQuery();
-                }
-            }
-        }
-
-        public List<FormDTO> LoadFormDTO(string selectedTable)
-        {
-            List<FormDTO> formRequests = new List<FormDTO>();
+            IList<T> formRequests = new List<T>();
 
             using (var conn = Provider.CreateConnection())
             {
@@ -199,7 +51,7 @@ namespace AutoKennis {
                 using (var command = Provider.CreateCommand())
                 {
                     command.Connection = conn;
-                    command.CommandText = $"SELECT id, attrs FROM {selectedTable} WHERE sent = false"; 
+					command.CommandText = $"SELECT id, attrs FROM {formType.GetTableName()} WHERE sent = false"; 
 
                     var reader = command.ExecuteReader();
 
@@ -212,45 +64,20 @@ namespace AutoKennis {
                             writer.Write(reader.GetString(reader.GetOrdinal("attrs")));
                             writer.Flush();
                             memstream.Position = 0;
-                            var formDTO = (FormDTO)Json.ReadObject(memstream);
+                            var formDTO = (T)Json.ReadObject(memstream);
                             formDTO.id = reader.GetInt64(reader.GetOrdinal("id"));
+							formDTO.Type = formType;
                             formRequests.Add(formDTO);
                         }
                     }
+
                 }
             }
+
             return formRequests;
         }
 
-
-        public List<FormDTOExtended> LoadFormDTOExtended(string selectedTable)
-        {
-            List<FormDTOExtended> formRequests = new List<FormDTOExtended>();
-
-            using (var conn = Provider.CreateConnection())
-            {
-                conn.ConnectionString = ConnectionString;
-                conn.Open();
-                using (var command = new SqlCommand())
-                {
-                    command.CommandText = $"SELECT attrs FROM {selectedTable} WHERE SENT = @false";
-
-                    SqlDataReader reader = command.ExecuteReader();
-
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-
-                            formRequests.Add((FormDTOExtended)Json.ReadObject(reader.GetStream(reader.GetOrdinal("attrs"))));
-                        }
-                    }
-                }
-            }
-            return formRequests;
-        }
-
-        public List<string> SetEmailAddresses()
+        public IList<string> GetEmailAddresses()
         {
             List<string> addresses = new List<string>();
             using (var conn = Provider.CreateConnection())
@@ -275,7 +102,7 @@ namespace AutoKennis {
             return addresses;
         }
 
-        public void EmailStateSetter(bool isSent, string selectedTable, long ID)
+        public void SetEmailSent(FormDTO form, bool sent)
         {
             using (var connection = Provider.CreateConnection())
             {
@@ -284,18 +111,9 @@ namespace AutoKennis {
                 using (var command = Provider.CreateCommand())
                 {
                     command.Connection = connection;
-                    command.CommandText = $"UPDATE {selectedTable} SET sent = @sent WHERE id = @id";
-
-                    var sent = Provider.CreateParameter();
-                    sent.Value = isSent;
-                    sent.ParameterName = "@sent";
-                    command.Parameters.Add(sent);
-
-                    var id = Provider.CreateParameter();
-                    id.Value = ID;
-                    id.ParameterName = "@id";
-                    command.Parameters.Add(id);
-
+					command.CommandText = $"UPDATE {form.Type.GetTableName()} SET sent = @sent WHERE id = @id";
+					command.SetParameter("sent", sent);
+					command.SetParameter("id", form.id);
                     command.ExecuteNonQuery();
                 }
             }

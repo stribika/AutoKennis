@@ -1,8 +1,10 @@
 ﻿using Npgsql;
 using System;
 using System.Data.Common;
+using System.Runtime.Serialization.Json;
+using AutoKennis;
 
-namespace AutoKennis {
+namespace AdminPortal {
 	public class AppConfig {
 		public static AppConfig Instance { get; private set; } = new AppConfig();
 
@@ -14,6 +16,22 @@ namespace AutoKennis {
 
 		public DbProviderFactory DatabaseProvider {
 			get { return NpgsqlFactory.Instance; }
+		}
+
+		private volatile DataContractJsonSerializer jsonSerializer = null;
+
+		public DataContractJsonSerializer JsonSerializer {
+			get {
+				if (jsonSerializer == null) {
+					lock (sync) {
+						if (jsonSerializer == null) {
+							jsonSerializer = new DataContractJsonSerializer(typeof(FormDTO));
+						}
+					}
+				}
+
+				return jsonSerializer;
+			}
 		}
 
 		private volatile IUserDAO userDAO = null;
@@ -29,6 +47,22 @@ namespace AutoKennis {
 				}
 
 				return userDAO;
+			}
+		}
+
+		private volatile IFormDAO formDAO = null;
+
+		public IFormDAO FormDAO {
+			get {
+				if (formDAO == null) {
+					lock (sync) {
+						if (formDAO == null) {
+							formDAO = new FormDAO(DatabaseConnectionString, DatabaseProvider, JsonSerializer);
+						}
+					}
+				}
+
+				return formDAO;
 			}
 		}
 	}

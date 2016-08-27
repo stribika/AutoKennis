@@ -8,6 +8,7 @@ namespace AutoKennisWeb {
 	public partial class ReparatieKeuring : System.Web.UI.Page {
 		public void submitButtonClicked(object sender, EventArgs args) {
             var form = new FormDTO();
+			form.Type = FormType.ReparatieKeuring;
             form.Fullname = Request.Form.Get("fullname");
             form.Address = Request.Form.Get("address");
             form.Postcode = Request.Form.Get("postcode");
@@ -28,7 +29,7 @@ namespace AutoKennisWeb {
             form.Comments = Request.Form.Get("comments");
             form.PaymentMethod = Request.Form.Get("paymentMethod");
 
-            AppConfig.Instance.FormDAO.saveReparatieKeuringForm(form);
+            AppConfig.Instance.FormDAO.SaveForm(form);
         }
 	}
 }

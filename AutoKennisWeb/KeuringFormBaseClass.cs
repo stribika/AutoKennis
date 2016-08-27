@@ -10,7 +10,7 @@ namespace AutoKennisWeb
     {
         static string server = "snowden.lan"; //"mail.auto-kennis.nl";
 
-        private IFormDAO FormDAO
+        protected IFormDAO FormDAO
         {
             get
             {
@@ -18,7 +18,7 @@ namespace AutoKennisWeb
             }
         }
 
-        private EmailSender EmailSender
+        protected EmailSender EmailSender
         {
             get
             {
@@ -26,10 +26,10 @@ namespace AutoKennisWeb
             }
         }
 
-
-        public static FormDTO FormDTOSend(HttpRequest Request)
+		protected FormDTO CreateFormDTO(FormType type)
         {
             var form = new FormDTO();
+			form.Type = type;
 
             form.Fullname = Request.Form.Get("fullname");
             form.Address = Request.Form.Get("address");
@@ -55,13 +55,14 @@ namespace AutoKennisWeb
             return form;
         }
 
-        public void SendOutMail(string selectedTable, string formtype)
+		public void SendOutMail(FormType formType)
         {
-            List<FormDTO> formDTOList = FormDAO.LoadFormDTO(selectedTable);
+			IList<FormDTO> formDTOList = FormDAO.LoadUnsentForms<FormDTO>(formType);
 
             foreach (FormDTO currentForm in formDTOList)
             {
-                FormDAO.EmailStateSetter(EmailSender.MailSend(server, FormDAO.SetEmailAddresses(), EmailSender.BodyBuilderFormDTO(formtype, currentForm), formtype, currentForm.Email.ToString()), selectedTable, currentForm.id); // EMAIL SERVERT TESZTELESHEZ BEALLITANI
+				EmailSender.MailSend(server, FormDAO.GetEmailAddresses(), EmailSender.BodyBuilderFormDTO(currentForm), formType.GetDescription(), currentForm.Email.ToString());
+				FormDAO.SetEmailSent(currentForm, true);
             }
         }
     }

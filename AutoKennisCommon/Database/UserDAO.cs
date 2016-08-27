@@ -20,9 +20,9 @@ namespace AutoKennis {
 				using (var command = Provider.CreateCommand()) {
 					command.Connection = connection;
 					command.CommandText = "insert into RegisteredUser (Name, PasswordSalt, PasswordHash) values (@Name, @PasswordSalt, @PasswordHash)";
-					Param(command, "Name", user.Name);
-					Param(command, "PasswordSalt", user.PasswordSalt);
-					Param(command, "PasswordHash", user.PasswordHash);
+					command.SetParameter("Name", user.Name);
+					command.SetParameter("PasswordSalt", user.PasswordSalt);
+					command.SetParameter("PasswordHash", user.PasswordHash);
 					command.ExecuteNonQuery();
 				}
 			}		
@@ -36,7 +36,7 @@ namespace AutoKennis {
 				using (var command = Provider.CreateCommand()) {
 					command.Connection = connection;
 					command.CommandText = "select PasswordSalt, PasswordHash from RegisteredUser where Name = @Name";
-					Param(command, "Name", username);
+					command.SetParameter("Name", username);
 
 					using (var reader = command.ExecuteReader()) {
 						if (reader.Read()) {
@@ -49,13 +49,6 @@ namespace AutoKennis {
 					}
 				}
 			}
-		}
-
-		private void Param(DbCommand command, string name, object value) {
-			var param = Provider.CreateParameter();
-			param.ParameterName = "@" + name;
-			param.Value = value;
-			command.Parameters.Add(param);
 		}
 
 		private byte[] BytesColumn(DbDataReader reader, string column, int length) {

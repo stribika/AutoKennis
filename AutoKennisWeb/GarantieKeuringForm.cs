@@ -6,39 +6,16 @@ using System.Threading;
 using AutoKennis;
 
 namespace AutoKennisWeb {
-	
 	public partial class GarantieKeuringForm : KeuringFormBaseClass {
-        private string selectedTable = "GarantieKeuringForm";
-        private string formtype = "Garantie-Keuring";
-
-        private IFormDAO FormDAO
-        {
-            get
-            {
-                return AppConfig.Instance.FormDAO;
-            }
-        }
-
-        private EmailSender EmailSender
-        {
-            get
-            {
-                return AppConfig.Instance.EmailSender;
-            }
-        }
-
 		public void submitButtonClicked(object sender, EventArgs args) {
+			var form = CreateFormDTO(FormType.GarantieKeuring);
+			FormDAO.SaveForm(form);
 
             ThreadPool.SetMaxThreads(4,16);
-
-            FormDAO.saveGarantieKeuringForm(KeuringFormBaseClass.FormDTOSend(Request));
-
-            ThreadPool.QueueUserWorkItem(new WaitCallback((x) => SendOutMail(selectedTable, formtype)));
-
+            ThreadPool.QueueUserWorkItem(new WaitCallback((x) => SendOutMail(FormType.GarantieKeuring)));
 
             // Meg visszaigazoljon
             Response.Redirect("/confirmation.htm");
         }
 	}
 }
-
