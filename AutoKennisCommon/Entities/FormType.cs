@@ -3,15 +3,19 @@ namespace AutoKennis
 {
 	public enum FormType
 	{
-		AutoAdvises,
+		[Description("Auto-Advies")]
+		AutoAdvies,
 
-		AnkoopBegeleiding,
+		[Description("Aankoop-Begeleiding")]
+		AankoopBegeleiding,
 
-		AnkoopKeuring,
+		[Description("Aankoop-Keuring")]
+		AankoopKeuring,
 
 		[Description("Garantie-Keuring")]
 		GarantieKeuring,
 
+		[Description("Reparatie-Keuring")]
 		ReparatieKeuring,
 	}
 }

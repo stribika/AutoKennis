@@ -7,7 +7,7 @@ namespace AutoKennisWeb {
 	public partial class AutoAdvies : System.Web.UI.Page {
 		public void submitButtonClicked(object sender, EventArgs args) {
             var form = new FormDTO();
-			form.Type = FormType.AutoAdvises;
+			form.Type = FormType.AutoAdvies;
             form.Fullname = Request.Form.Get("fullname");
             form.Address = Request.Form.Get("address");
             form.Postcode = Request.Form.Get("postcode");
