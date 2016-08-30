@@ -1,10 +1,12 @@
-﻿using System;
+﻿using AutoKennis;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.IO;
 using System.IO.Compression;
 using System.Xml;
+using System.Reflection;
 
 namespace AutoKennisWeb
 {
@@ -19,7 +21,7 @@ namespace AutoKennisWeb
             ZipFile.ExtractToDirectory(startPath, extractPath);
 
             XmlDocument editedDoc = new XmlDocument();
-            editedDoc.LoadXml(editXml(extractPath + @"\word\document.xml", null));
+            editedDoc.LoadXml(EditXml(extractPath + @"\word\document.xml", null));
             editedDoc.Save("document.xml");
 
             File.Replace("document.xml", extractPath + @"\word\document.xml", "backup.xml");
@@ -29,18 +31,32 @@ namespace AutoKennisWeb
             ZipFile.CreateFromDirectory(extractPath, zipPath);
         }
 
-		private string editXml(string xmlPath, Dictionary<string, string> parameters)
+        private string EditXml(string xmlPath, FormDTO formDTO)
         {
             string xml = File.ReadAllText(xmlPath);
+            PropertyInfo[] properties = typeof(FormDTO).GetProperties();
 
-			foreach (var param in parameters) {
-				xml = xml.Replace("$({" + param.Key + "})", param.Value);
-			}
-            //xml = xml.Replace("$({Name})", "Test Name").Replace("$({reportDate})", DateTime.Today.ToString());
-            //xml = xml.Replace("$({carType})", "Test Type").Replace("$({carLicensePlate})", "Test Licenceplate");
-            //xml = xml.Replace("$({carKm})", "Test km").Replace("$({carYear})", "Test Year").Replace("$({carPrice})", "Test price");
-            //xml = xml.Replace("$({cst})", "Test cost").Replace("$({km})", "$({km})").Replace("$({ttc})", "$({ttc})");
-            //xml = xml.Replace("$({carHistory})", "Test history");
+            foreach (PropertyInfo property in properties)
+            {
+
+                xml = xml.Replace($"${property.GetCustomAttribute<NLNameAttribute>().NLName}", property.GetValue(formDTO).ToString());
+
+            }
+
+            return xml;
+        }
+
+        private string EditXml(string xmlPath, FormDTOExtended formDTOExtended)
+        {
+            string xml = File.ReadAllText(xmlPath);
+            PropertyInfo[] properties = typeof(FormDTOExtended).GetProperties();
+
+            foreach (PropertyInfo property in properties)
+            {
+
+                xml = xml.Replace($"${property.GetCustomAttribute<NLNameAttribute>().NLName}", property.GetValue(formDTOExtended).ToString());
+
+            }
 
             return xml;
         }

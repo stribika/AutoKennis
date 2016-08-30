@@ -82,14 +82,15 @@
     </Compile>
     <Compile Include="AppConfig.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="css\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <ProjectReference Include="..\AutoKennisCommon\AutoKennisCommon.csproj">
       <Project>{3406F6C9-8C5F-4ADF-A0C0-5A17E062BE36}</Project>
       <Name>AutoKennisCommon</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ClassDiagram1.cd" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
