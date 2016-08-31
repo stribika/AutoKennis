@@ -10,11 +10,23 @@ namespace AdminPortal {
 	public partial class Default : System.Web.UI.Page {
 		private IList<PropertyInfo> Columns = new List<PropertyInfo>();
 
+		private IFormDAO FormDAO { 
+			get { return AppConfig.Instance.FormDAO; }
+		}
+
 		protected override void OnLoad(EventArgs e)
 		{
 			base.OnLoad(e);
 			GarantieKeuringTable.Rows.Add(CreateHeader());
-			foreach (var form : )
+			foreach (var form in FormDAO.LoadActiveForms<FormDTO>(FormType.GarantieKeuring)) {
+				var row = new TableRow();
+				foreach (var col in Columns) {
+					var cell = new TableCell();
+					cell.Text = col.GetValue(form).ToString();
+					row.Cells.Add(cell);
+				}
+				GarantieKeuringTable.Rows.Add(row);
+			}
 		}
 
 		private TableRow CreateHeader()
