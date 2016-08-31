@@ -40,42 +40,36 @@ namespace AutoKennis {
             }
         }
 
+		public IList<T> LoadActiveForms<T>(FormType formType) where T: FormDTO
+		{
+			using (var conn = Provider.CreateConnection()) {
+				conn.ConnectionString = ConnectionString;
+				conn.Open();
+				return conn.Query($"SELECT Id, Attrs FROM {formType.GetTableName()} WHERE Status = 'Active'", (reader) => ReadFormDTO<T>(reader, formType));
+			}
+		}
+
 		public IList<T> LoadUnsentForms<T>(FormType formType) where T: FormDTO
         {
-            IList<T> formRequests = new List<T>();
-
             using (var conn = Provider.CreateConnection())
             {
                 conn.ConnectionString = ConnectionString;
                 conn.Open();
-                using (var command = Provider.CreateCommand())
-                {
-                    command.Connection = conn;
-					command.CommandText = $"SELECT id, attrs FROM {formType.GetTableName()} WHERE sent = false"; 
-
-                    var reader = command.ExecuteReader();
-
-                    if (reader.HasRows)
-                    {
-                        while (reader.Read())
-                        {
-                            var memstream = new MemoryStream();
-                            var writer = new StreamWriter(memstream);
-                            writer.Write(reader.GetString(reader.GetOrdinal("attrs")));
-                            writer.Flush();
-                            memstream.Position = 0;
-                            var formDTO = (T)Json.ReadObject(memstream);
-                            formDTO.id = reader.GetInt64(reader.GetOrdinal("id"));
-							formDTO.Type = formType;
-                            formRequests.Add(formDTO);
-                        }
-                    }
-
-                }
+				return conn.Query($"SELECT Id, Attrs FROM {formType.GetTableName()} WHERE Sent = false", (reader) => ReadFormDTO<T>(reader, formType));
             }
+		}
 
-            return formRequests;
-        }
+		private T ReadFormDTO<T>(DbDataReader reader, FormType formType) where T: FormDTO {
+			var memstream = new MemoryStream();
+			var writer = new StreamWriter(memstream);
+			writer.Write(reader.GetString(reader.GetOrdinal("attrs")));
+			writer.Flush();
+			memstream.Position = 0;
+			var formDTO = (T)Json.ReadObject(memstream);
+			formDTO.id = reader.GetInt64(reader.GetOrdinal("id"));
+			formDTO.Type = formType;
+			return formDTO;
+		}
 
         public IList<string> GetEmailAddresses()
         {

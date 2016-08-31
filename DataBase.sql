@@ -10,35 +10,40 @@ create table AankoopBegeleidingForm (
 	Id serial not null constraint AankoopBegeleidingForm_pk primary key,
 	Version integer not null,
 	Attrs jsonb not null,
-	Sent boolean not null default false
+	Sent boolean not null default false,
+	Status varchar(8) not null default 'Active'
 );
 
 create table AankoopKeuringForm (
 	Id serial not null constraint AankoopKeuringForm_pk primary key,
 	Version integer not null,
 	Attrs jsonb not null,
-	Sent boolean not null default false
+	Sent boolean not null default false,
+	Status varchar(8) not null default 'Active'
 );
 
 create table AutoAdviesForm (
 	Id serial not null constraint AutoAdviesForm_pk primary key,
 	Version integer not null,
 	Attrs jsonb not null,
-	Sent boolean not null default false
+	Sent boolean not null default false,
+	Status varchar(8) not null default 'Active'
 );
 
 create table GarantieKeuringForm (
 	Id serial not null constraint GarantieKeuringForm_pk primary key,
 	Version integer not null,
 	Attrs jsonb not null,
-	Sent boolean not null default false
+	Sent boolean not null default false,
+	Status varchar(8) not null default 'Active'
 );
 
 create table ReparatieKeuringForm (
 	Id serial not null constraint ReparatieKeuringForm_pk primary key,
 	Version integer not null,
 	Attrs jsonb not null,
-	Sent boolean not null default false
+	Sent boolean not null default false,
+	Status varchar(8) not null default 'Active'
 );
 
 create table EmailReceivers (
