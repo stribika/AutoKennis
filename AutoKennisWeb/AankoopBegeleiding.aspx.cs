@@ -7,7 +7,7 @@ namespace AutoKennisWeb {
 	public partial class AankoopBegeleiding : System.Web.UI.Page {
 		public void submitButtonClicked(object sender, EventArgs args) {
             var form = new FormDTOExtended();
-            form.Type = FormType.AnkoopBegeleiding;
+            form.Type = FormType.AankoopBegeleiding;
 
 			form.Fullname = Request.Form.Get("fullname");
             form.Address = Request.Form.Get("address");
