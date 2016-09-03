@@ -11,8 +11,8 @@ namespace AdminPortal {
 		}
 
 		public void SubmitButtonClicked(object sender, EventArgs args) {
-			if (ValidateUser(Username.Text, Password.Text)) {
-				FormsAuthentication.RedirectFromLoginPage(Username.Text, createPersistentCookie: true);
+            if (ValidateUser(Username.Text, Password.Text)) {
+            FormsAuthentication.RedirectFromLoginPage(Username.Text, createPersistentCookie: true);
 			} else {
 				ErrorMessage.Text = "Gebruikersnaam of wachtwoord incorrect.";
 				ErrorMessage.Visible = true;

@@ -2,38 +2,20 @@
 using System.Web;
 using System.Web.UI;
 using AutoKennis;
+using System.Threading;
 
 namespace AutoKennisWeb {
-	public partial class AankoopKeuring : System.Web.UI.Page {
-		public void submitButtonClicked(object sender, EventArgs args) {
-            var form = new FormDTOExtended();
-			form.Type = FormType.AankoopKeuring;
-            form.Fullname = Request.Form.Get("fullname");
-            form.Address = Request.Form.Get("address");
-            form.Postcode = Request.Form.Get("postcode");
-            form.City = Request.Form.Get("city");
-            form.Email = Request.Form.Get("email");
-            form.PhoneNumberPrimary = Request.Form.Get("phoneNumberPrimary");
-            form.PhoneNumberAlternate = Request.Form.Get("phoneNumberAlternate");
-            form.PreferredDate = Request.Form.Get("preferredDate");
-            form.PreferredTime = Request.Form.Get("preferredTime");
+	public partial class AankoopKeuring : KeuringFormBaseClass {
+        public void submitButtonClicked(object sender, EventArgs args)
+        {
+            var form = CreateFormDTO(FormType.AankoopKeuring);
+            FormDAO.SaveForm(form);
 
-            form.CarBrand = Request.Form.Get("carBrand");
-            form.CarModel = Request.Form.Get("carModel");
-            form.CarLicencePlate = Request.Form.Get("carLicencePlate");
-            form.CarYear = Request.Form.Get("carYear");
-            form.CarAddress = Request.Form.Get("carAddress");
-            form.CarCity = Request.Form.Get("carCity");
-            form.CarPostcode = Request.Form.Get("carPostcode");
-            form.Comments = Request.Form.Get("comments");
-            form.PaymentMethod = Request.Form.Get("paymentMethod");
+            ThreadPool.SetMaxThreads(4, 16);
+            ThreadPool.QueueUserWorkItem(new WaitCallback((x) => SendOutMail(FormType.AankoopKeuring)));
 
-            form.SellerPhoneNumber = Request.Form.Get("sellerPhoneNumber");
-            form.SellerType = Request.Form.Get("sellerType");
-            form.CarPrice = Request.Form.Get("carPrice");
-
-
-            AppConfig.Instance.FormDAO.SaveForm(form);
+            // Meg visszaigazoljon
+            Response.Redirect("/confirmation.htm");
         }
 	}
 }
