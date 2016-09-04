@@ -93,7 +93,6 @@
     <Compile Include="AutoAdvies.aspx.designer.cs">
       <DependentUpon>AutoAdvies.aspx</DependentUpon>
     </Compile>
-    <Compile Include="EmailSender.cs" />
     <Compile Include="KeuringFormBaseClass.cs">
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
@@ -121,7 +120,6 @@
     <Compile Include="GarantieKeuringForm.aspx.designer.cs">
       <DependentUpon>GarantieKeuringForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="ReportEditor.cs" />
     <Compile Include="AppConfig.cs" />
   </ItemGroup>
   <ItemGroup>
