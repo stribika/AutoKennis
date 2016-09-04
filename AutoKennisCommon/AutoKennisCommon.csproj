@@ -40,6 +40,8 @@
     <Reference Include="nunit.framework">
       <HintPath>..\packages\NUnit.3.4.1\lib\net45\nunit.framework.dll</HintPath>
     </Reference>
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EmailSender.cs" />
@@ -59,10 +61,18 @@
     <Compile Include="Database\DatabaseExtensions.cs" />
     <Compile Include="Database\TestFormDAO.cs" />
     <Compile Include="ReportEditor.cs" />
+    <Compile Include="IReportEditor.cs" />
+    <Compile Include="TestReportEditor.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="TestData\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="TestData\template.docx" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>
