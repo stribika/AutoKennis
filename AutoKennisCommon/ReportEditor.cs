@@ -8,42 +8,70 @@ using System.IO.Compression;
 using System.Xml;
 using System.Reflection;
 
-namespace AutoKennisWeb
+namespace AutoKennis
 {
-    public class ReportEditor
-    {
-        //string startPath = @"C:\Users\Eigenaar\Downloads\ReportExample.docx";
-        //string extractPath = @"C:\Users\Eigenaar\Downloads\Xmlek";
-        //string zipPath = @"C:\Users\Eigenaar\Downloads\TestReport.docx";
+	public class ReportEditor: IDisposable, IReportEditor
+	{
+		internal static readonly string PathInDocx = Path.Combine("word", "document.xml");
 
-        public void CreateDocx<T>(string startPath, string extractPath, string zipPath, T formDTO) where T: FormDTO
+		private readonly string DocxTemplatePath;
+
+		private readonly string DocumentXmlTemplatePath = Path.GetTempFileName();
+
+		public ReportEditor(string docxTemplatePath)
+		{
+			DocxTemplatePath = docxTemplatePath;
+
+			using (var templateStream = new FileStream(DocxTemplatePath, FileMode.Open, FileAccess.Read)) {
+				using (var templateZip = new ZipArchive(templateStream, ZipArchiveMode.Read)) {
+					var entryToExtract = templateZip.GetEntry(PathInDocx);
+					entryToExtract.ExtractToFile(DocumentXmlTemplatePath, overwrite: true);
+				}
+			}
+		}
+
+		~ReportEditor() {
+			Dispose();
+		}
+
+		public void Dispose() {
+			File.Delete(DocumentXmlTemplatePath);
+		}
+
+		public string CreateDocx(object formDTO)
+		{
+			var documentXmlReportPath = CreateDocumentXml(formDTO);
+			try {
+				var docxReportPath = Path.GetTempFileName();
+				File.Copy(DocxTemplatePath, docxReportPath, overwrite: true);
+				using (var docxReportStream = new FileStream(docxReportPath, FileMode.Open, FileAccess.ReadWrite)) {
+					using (var docxReportZip = new ZipArchive(docxReportStream, ZipArchiveMode.Update)) {
+						docxReportZip.GetEntry(PathInDocx).Delete();
+						docxReportZip.CreateEntryFromFile(documentXmlReportPath, PathInDocx);
+					}
+				}
+				return docxReportPath;
+			} finally {
+				File.Delete(documentXmlReportPath);
+			}
+		}
+
+        private string CreateDocumentXml(object formDTO)
         {
-            ZipFile.ExtractToDirectory(startPath, extractPath);
+			var documentXmlReportPath = Path.GetTempFileName();
 
-            XmlDocument editedDoc = new XmlDocument();
-            editedDoc.LoadXml(EditXml(extractPath + @"\word\document.xml", formDTO));
-            editedDoc.Save("document.xml");
-
-            File.Replace("document.xml", extractPath + @"\word\document.xml", "backup.xml");
-
-            //file replace a kepeket is kesobb
-
-            ZipFile.CreateFromDirectory(extractPath, zipPath);
-        }
-
-        private string EditXml<T>(string xmlPath, T formDTO) where T: FormDTO
-        {
-            string xml = File.ReadAllText(xmlPath);
-            PropertyInfo[] properties = typeof(T).GetProperties();
+			string xml = File.ReadAllText(DocumentXmlTemplatePath);
+			PropertyInfo[] properties = formDTO.GetType().GetProperties();
 
             foreach (PropertyInfo property in properties)
             {
-				var placeholder = $"${property.GetCustomAttribute<NLNameAttribute>().NLName}";
+				var placeholder = $"${{{property.GetCustomAttribute<NLNameAttribute>().NLName}}}";
 				var escapedValue = EscapeXml(property.GetValue(formDTO)?.ToString());
 				xml = xml.Replace(placeholder, escapedValue);
             }
 
-            return xml;
+			File.WriteAllText(documentXmlReportPath, xml);
+            return documentXmlReportPath;
         }
 
 		private static string EscapeXml(string unescaped)
