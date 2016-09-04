@@ -61,6 +61,7 @@
     <Content Include="packages.config" />
     <Content Include="Login.aspx" />
     <Content Include="css\adminportal.css" />
+    <Content Include="FormListPanel.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -81,6 +82,12 @@
       <DependentUpon>Login.aspx</DependentUpon>
     </Compile>
     <Compile Include="AppConfig.cs" />
+    <Compile Include="FormListPanel.ascx.cs">
+      <DependentUpon>FormListPanel.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="FormListPanel.ascx.designer.cs">
+      <DependentUpon>FormListPanel.ascx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

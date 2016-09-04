@@ -11,16 +11,12 @@
 namespace AdminPortal {
 	
 	
-	public partial class Default {
+	public partial class FormListPanel {
 		
-		protected AdminPortal.FormListPanel AutoAdvies;
+		protected System.Web.UI.WebControls.Table table;
 		
-		protected AdminPortal.FormListPanel AankoopBegeleiding;
+		protected System.Web.UI.WebControls.CheckBox showCompleted;
 		
-		protected AdminPortal.FormListPanel AankoopKeuring;
-		
-		protected AdminPortal.FormListPanel GarantieKeuring;
-		
-		protected AdminPortal.FormListPanel ReparatieKeuring;
+		protected System.Web.UI.WebControls.CheckBox showDeleted;
 	}
 }
