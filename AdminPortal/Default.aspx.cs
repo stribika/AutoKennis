@@ -8,8 +8,6 @@ using AutoKennis;
 
 namespace AdminPortal {
 	public partial class Default : System.Web.UI.Page {
-		private IList<PropertyInfo> Columns = new List<PropertyInfo>();
-
 		private IFormDAO FormDAO { 
 			get { return AppConfig.Instance.FormDAO; }
 		}

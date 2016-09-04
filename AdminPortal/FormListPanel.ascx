@@ -2,7 +2,9 @@
 <div class="panel panel-default">
 	<div class="panel-heading"><%= Heading %></div>
 	<div class="panel-body">
-		<asp:Table id="table" CssClass="table" runat="server"/>
+		<asp:Table id="table" CssClass="table table-striped" runat="server">
+			<asp:TableHeaderRow id="tableHeader" TableSection="TableHeader" runat="server"/>
+		</asp:Table>
 	</div>
 	<div class="panel-footer">
 		<label class="btn btn-primary">

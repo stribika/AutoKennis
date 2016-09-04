@@ -37,19 +37,17 @@ namespace AdminPortal
 				lock (sync) {
 					if (Columns == null) {
 						var cols = new List<PropertyInfo>();
-						var header = new TableRow();
 						var properties = typeof(FormDTO).GetProperties();
 						foreach (var prop in properties) {
 							var attr = prop.GetCustomAttribute<NLNameAttribute>();
 							if (attr != null && attr.SummaryTable) {
 								var cell = new TableCell();
 								cell.Text = attr.NLName;
-								header.Cells.Add(cell);
+								tableHeader.Cells.Add(cell);
 								cols.Add(prop);
 							}
 						}
 
-						table.Rows.Add(header);
 						Columns = cols;
 					}
 				}

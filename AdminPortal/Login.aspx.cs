@@ -14,7 +14,6 @@ namespace AdminPortal {
             if (ValidateUser(Username.Text, Password.Text)) {
             FormsAuthentication.RedirectFromLoginPage(Username.Text, createPersistentCookie: true);
 			} else {
-				ErrorMessage.Text = "Gebruikersnaam of wachtwoord incorrect.";
 				ErrorMessage.Visible = true;
 				Response.StatusCode = 403;
 			}

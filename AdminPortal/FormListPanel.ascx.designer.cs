@@ -15,6 +15,8 @@ namespace AdminPortal {
 		
 		protected System.Web.UI.WebControls.Table table;
 		
+		protected System.Web.UI.WebControls.TableHeaderRow tableHeader;
+		
 		protected System.Web.UI.WebControls.CheckBox showCompleted;
 		
 		protected System.Web.UI.WebControls.CheckBox showDeleted;

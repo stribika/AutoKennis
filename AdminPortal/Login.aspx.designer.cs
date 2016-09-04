@@ -15,11 +15,11 @@ namespace AdminPortal {
 		
 		protected System.Web.UI.HtmlControls.HtmlForm LoginForm;
 		
+		protected System.Web.UI.WebControls.Panel ErrorMessage;
+		
 		protected System.Web.UI.WebControls.TextBox Username;
 		
 		protected System.Web.UI.WebControls.TextBox Password;
-		
-		protected System.Web.UI.WebControls.Label ErrorMessage;
 		
 		protected System.Web.UI.WebControls.Button SubmitButton;
 	}
