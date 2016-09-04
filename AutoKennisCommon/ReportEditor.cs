@@ -16,12 +16,12 @@ namespace AutoKennisWeb
         //string extractPath = @"C:\Users\Eigenaar\Downloads\Xmlek";
         //string zipPath = @"C:\Users\Eigenaar\Downloads\TestReport.docx";
 
-        public void docXcreator(string startPath, string extractPath, string zipPath)
+        public void CreateDocx<T>(string startPath, string extractPath, string zipPath, T formDTO) where T: FormDTO
         {
             ZipFile.ExtractToDirectory(startPath, extractPath);
 
             XmlDocument editedDoc = new XmlDocument();
-            editedDoc.LoadXml(EditXml(extractPath + @"\word\document.xml", null));
+            editedDoc.LoadXml(EditXml(extractPath + @"\word\document.xml", formDTO));
             editedDoc.Save("document.xml");
 
             File.Replace("document.xml", extractPath + @"\word\document.xml", "backup.xml");
@@ -31,35 +31,28 @@ namespace AutoKennisWeb
             ZipFile.CreateFromDirectory(extractPath, zipPath);
         }
 
-        private string EditXml(string xmlPath, FormDTO formDTO)
+        private string EditXml<T>(string xmlPath, T formDTO) where T: FormDTO
         {
             string xml = File.ReadAllText(xmlPath);
-            PropertyInfo[] properties = typeof(FormDTO).GetProperties();
+            PropertyInfo[] properties = typeof(T).GetProperties();
 
             foreach (PropertyInfo property in properties)
             {
-
-                xml = xml.Replace($"${property.GetCustomAttribute<NLNameAttribute>().NLName}", property.GetValue(formDTO).ToString());
-
+				var placeholder = $"${property.GetCustomAttribute<NLNameAttribute>().NLName}";
+				var escapedValue = EscapeXml(property.GetValue(formDTO)?.ToString());
+				xml = xml.Replace(placeholder, escapedValue);
             }
 
             return xml;
         }
 
-        private string EditXml(string xmlPath, FormDTOExtended formDTOExtended)
-        {
-            string xml = File.ReadAllText(xmlPath);
-            PropertyInfo[] properties = typeof(FormDTOExtended).GetProperties();
-
-            foreach (PropertyInfo property in properties)
-            {
-
-                xml = xml.Replace($"${property.GetCustomAttribute<NLNameAttribute>().NLName}", property.GetValue(formDTOExtended).ToString());
-
-            }
-
-            return xml;
-        }
+		private static string EscapeXml(string unescaped)
+		{
+			XmlDocument doc = new XmlDocument();
+			XmlNode node = doc.CreateElement("root");
+			node.InnerText = unescaped;
+			return node.InnerXml;
+		}
 
         private string licencePlateOpt(string licenceplate)
         {
