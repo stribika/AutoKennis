@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" Inherits="AdminPortal.Login" %>
+<%@ Register Tagprefix="ak" TagName="FormField" Src="FormField.ascx" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -19,21 +20,9 @@
 				Gebruikersnaam of wachtwoord incorrect.
 			</asp:Panel>
 			<br/>
-			<label for="Username">Gebruikersnaam</label>
-			<div class="input-group">
-				<span class="input-group-addon">
-					<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
-				</span>
-				<asp:TextBox id="Username" TextMode="SingleLine" placeholder="Gebruikersnaam" CssClass="form-control" runat="server"/>
-			</div>
+			<ak:FormField id="Username" Label="Gebruikersnaam" Glyphicon="user" Placeholder="Gebruikersnaam"  TextMode="SingleLine" runat="server"/>
 			<br/>
-			<label for="Password">Wachtwoord</label>
-			<div class="input-group">
-				<span class="input-group-addon">
-					<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
-				</span>
-				<asp:TextBox id="Password" TextMode="Password" placeholder="Wachtwoord" CssClass="form-control" runat="server"/>
-			</div>
+			<ak:FormField id="Password" Label="Wachtwoord" Glyphicon="lock" Placeholder="Wachtwoord" TextMode="Password" runat="server"/>
 			<br/>
 			<asp:Button id="SubmitButton" Text="Inloggen" OnClick="SubmitButtonClicked" CssClass="btn btn-default" runat="server"/>
 		</form>

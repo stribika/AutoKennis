@@ -1,6 +1,6 @@
 ﻿<%@ Control Language="C#" Inherits="AdminPortal.FormListPanel" %>
 <div class="panel panel-default">
-	<div class="panel-heading"><%= Heading %></div>
+	<div class="panel-heading"><%= HttpUtility.HtmlEncode(Heading) %></div>
 	<div class="panel-body">
 		<asp:Table id="table" CssClass="table table-striped" runat="server">
 			<asp:TableHeaderRow id="tableHeader" TableSection="TableHeader" runat="server"/>

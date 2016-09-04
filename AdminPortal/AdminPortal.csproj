@@ -63,6 +63,7 @@
     <Content Include="css\adminportal.css" />
     <Content Include="FormListPanel.ascx" />
     <Content Include="FormDetails.aspx" />
+    <Content Include="FormField.ascx" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Global.asax.cs">
@@ -94,6 +95,12 @@
     </Compile>
     <Compile Include="FormDetails.aspx.designer.cs">
       <DependentUpon>FormDetails.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="FormField.ascx.cs">
+      <DependentUpon>FormField.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="FormField.ascx.designer.cs">
+      <DependentUpon>FormField.ascx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup />

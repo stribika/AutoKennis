@@ -17,9 +17,9 @@ namespace AdminPortal {
 		
 		protected System.Web.UI.WebControls.Panel ErrorMessage;
 		
-		protected System.Web.UI.WebControls.TextBox Username;
+		protected AdminPortal.FormField Username;
 		
-		protected System.Web.UI.WebControls.TextBox Password;
+		protected AdminPortal.FormField Password;
 		
 		protected System.Web.UI.WebControls.Button SubmitButton;
 	}

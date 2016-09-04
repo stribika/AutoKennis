@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Reflection;
 using System.Web;
+using System.Web.UI.HtmlControls;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -19,7 +20,10 @@ namespace AdminPortal
 					var row = new TableRow();
 					foreach (var col in CreateHeader()) {
 						var cell = new TableCell();
-						cell.Text = col.GetValue(form)?.ToString();
+						var link = new HyperLink();
+						link.Text = col.GetValue(form)?.ToString();
+						link.NavigateUrl = $"/FormDetails.aspx?type={form.Type}&id={form.id}";
+						cell.Controls.Add(link);
 						row.Cells.Add(cell);
 					}
 					table.Rows.Add(row);
