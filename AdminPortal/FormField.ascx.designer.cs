@@ -11,8 +11,12 @@
 namespace AdminPortal {
 	
 	
-	public partial class FormDetails {
+	public partial class FormField {
 		
-		protected System.Web.UI.HtmlControls.HtmlForm form;
+		protected System.Web.UI.WebControls.Label glyph;
+		
+		protected System.Web.UI.WebControls.Label prefix;
+		
+		protected System.Web.UI.WebControls.TextBox textBox;
 	}
 }

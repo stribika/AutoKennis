@@ -14,7 +14,19 @@ namespace AutoKennis
 			command.Parameters.Add(param);
 		}
 
-		public static IList<T> Query<T>(this DbConnection connection, string sql, Func<DbDataReader, T> func) {
+		public static T QueryForOne<T>(this DbConnection connection, string sql, Func<DbDataReader, T> func)
+		{
+			return connection.QueryForOne(sql, new Dictionary<string, object>(), func);
+		}
+
+		public static T QueryForOne<T>(this DbConnection connection, string sql, IDictionary<string, object> parameters, Func<DbDataReader, T> func)
+		{
+			var result = connection.Query(sql, parameters, func);
+			return result[0];
+		}
+
+		public static IList<T> Query<T>(this DbConnection connection, string sql, Func<DbDataReader, T> func)
+		{
 			return connection.Query(sql, new Dictionary<string, object>(), func);
 		}
 

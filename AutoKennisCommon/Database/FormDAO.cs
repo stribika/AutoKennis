@@ -40,6 +40,17 @@ namespace AutoKennis {
             }
         }
 
+		public FormDTO LoadForm(FormType formType, long id)
+		{
+			using (var conn = Provider.CreateConnection()) {
+				conn.ConnectionString = ConnectionString;
+				conn.Open();
+				var parameters = new Dictionary<string, object>();
+				parameters["Id"] = id;
+				return conn.QueryForOne($"SELECT Id, Attrs FROM {formType.GetTableName()} WHERE Id = @Id", (reader) => ReadFormDTO<FormDTO>(reader, formType));
+			}
+		}
+
 		public IList<T> LoadActiveForms<T>(FormType formType) where T: FormDTO
 		{
 			using (var conn = Provider.CreateConnection()) {
