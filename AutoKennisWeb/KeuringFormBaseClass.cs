@@ -8,7 +8,7 @@ namespace AutoKennisWeb
 {
     public abstract class KeuringFormBaseClass : System.Web.UI.Page
     {
-        static string server = "snowden.lan"; //"mail.auto-kennis.nl";
+        static string server = "localhost"; //"mail.auto-kennis.nl";
 
         protected IFormDAO FormDAO
         {
