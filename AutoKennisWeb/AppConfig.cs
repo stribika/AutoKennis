@@ -37,7 +37,7 @@ namespace AutoKennisWeb {
 					lock (sync) {
 						if (formDAO == null) {
 							formDAO = new FormDAO(
-                                "Host=localhost;Username=AutoKennis;Database=AutoKennis",
+                                "Host=localhost;Username=autokennis;Database=autokennis",
                                 Npgsql.NpgsqlFactory.Instance,
                                 JsonSerializer
                             );

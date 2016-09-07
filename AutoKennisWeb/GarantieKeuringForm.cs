@@ -10,7 +10,6 @@ namespace AutoKennisWeb {
 		public void submitButtonClicked(object sender, EventArgs args) {
 			var form = CreateFormDTO(FormType.GarantieKeuring);
 			FormDAO.SaveForm(form);
-
             ThreadPool.SetMaxThreads(4,16);
             ThreadPool.QueueUserWorkItem(new WaitCallback((x) => SendOutMail(FormType.GarantieKeuring)));
 

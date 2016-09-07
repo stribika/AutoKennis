@@ -6,11 +6,13 @@ using AutoKennis;
 
 namespace AdminPortal {
 	public partial class Login : System.Web.UI.Page {
-		private IUserDAO UserDAO {
+
+        private IUserDAO UserDAO {
 			get { return AppConfig.Instance.UserDAO; }
 		}
 
 		public void SubmitButtonClicked(object sender, EventArgs args) {
+
             if (ValidateUser(Username.Text, Password.Text)) {
             FormsAuthentication.RedirectFromLoginPage(Username.Text, createPersistentCookie: true);
 			} else {
