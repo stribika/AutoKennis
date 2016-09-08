@@ -13,7 +13,7 @@
     <!-- End of the headers for CoffeeCup Web Form Builder -->
     <title>
       aankoop-begeleiding-form
-    </title>
+    </title> 
   </head>
   
   <body>
