@@ -283,7 +283,7 @@
               <label style="DISPLAY: inline" id="item39_label_0">Klik hier om u akkoord te verklaren met de algemene voorwaarden van Auto-Kennis*</label>
             </div>
             <div style="COLOR: #000000" class="fb-checkbox">
-              <label id="item39_0_label"><input id="item39_0_checkbox" name="Akkoord[]" type="checkbox" data-hint="" value="Akkoord" /><span id="item39_0_span" class="fb-fieldlabel">Akkoord</span></label>
+              <label id="item39_0_label"><input id="item39_0_checkbox" name="Akkoord[]" type="checkbox" data-hint="" value="Akkoord" required="required"/><span id="item39_0_span" class="fb-fieldlabel">Akkoord</span></label>
             </div>
           </div>
           <div style="FILTER: ; PADDING-BOTTOM: 12px" id="item40" class="fb-item fb-100-item-column">
