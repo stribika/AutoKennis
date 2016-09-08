@@ -161,10 +161,10 @@
           </div>
           <div id="item21" class="fb-item fb-25-item-column">
             <div class="fb-grouplabel">
-              <label style="DISPLAY: inline" for="carLicensePlate">Kenteken* </label>
+              <label style="DISPLAY: inline" for="carLicencePlate">Kenteken* </label>
             </div>
             <div class="fb-input-box">
-              <asp:TextBox id="carLicensePlate" required="true" maxlength="254" placeholder="bijv. 16-XLJ-3" runat="server"/>
+              <asp:TextBox id="carLicencePlate" required="true" maxlength="254" placeholder="bijv. 16-XLJ-3" runat="server"/>
             </div>
           </div>
           <div style="PADDING-BOTTOM: 10px" id="item22" class="fb-item fb-25-item-column">
