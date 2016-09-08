@@ -64,6 +64,7 @@
     <Content Include="AankoopBegeleiding.aspx" />
     <Content Include="AankoopKeuring.aspx" />
     <Content Include="AutoAdvies.aspx" />
+    <Content Include="confirmation.htm" />
     <Content Include="ReparatieKeuring.aspx" />
     <Content Include="Global.asax" />
     <Content Include="web.config" />
