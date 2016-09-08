@@ -44,7 +44,7 @@ namespace AutoKennisWeb
 
             form.CarBrand = Request.Form.Get("carBrand");
             form.CarModel = Request.Form.Get("carModel");
-            form.CarLicencePlate = Request.Form.Get("carLicencePlate");
+            form.CarLicencePlate = Request.Form.Get("carLicensePlate");
             form.CarYear = Request.Form.Get("carYear");
             form.CarAddress = Request.Form.Get("carAddress");
             form.CarCity = Request.Form.Get("carCity");
