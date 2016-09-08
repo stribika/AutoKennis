@@ -13,7 +13,8 @@ namespace AutoKennis
         //GARANTIE KEURING, REPARATIE KEURING, AUTO ADVIES ADATOK
 
         [DataMember(EmitDefaultValue = false)]
-		[NLNameAttribute("Uw Naam", mandatory: true, summaryTable: true)]
+		[NLNameAttribute("Uw Naam", mandatory: true)]
+		[SummaryTableHeader("Naam")]
         public string Fullname { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
@@ -49,31 +50,38 @@ namespace AutoKennis
         public string PreferredTime { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-		[NLNameAttribute("Merk", mandatory: true, summaryTable: true)]
+		[NLNameAttribute("Merk", mandatory: true)]
+		[SummaryTableHeader("Merk")]
 		public string CarBrand { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        [NLNameAttribute("Type", mandatory: true, summaryTable: true)]
+        [NLNameAttribute("Type", mandatory: true)]
+		[SummaryTableHeader("Type")]
 		public string CarModel { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        [NLNameAttribute("Kenteken", mandatory: true, summaryTable: true)]
+        [NLNameAttribute("Kenteken", mandatory: true)]
+		[SummaryTableHeader("Kenteken")]
 		public string CarLicencePlate { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        [NLNameAttribute("Bouwjaar", mandatory: true, summaryTable: true)]
+        [NLNameAttribute("Bouwjaar", mandatory: true)]
+		[SummaryTableHeader("Bouwjaar")]
 		public string CarYear { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        [NLNameAttribute("Adres Auto", mandatory: true, summaryTable: true)]
+        [NLNameAttribute("Adres Auto", mandatory: true)]
+		[SummaryTableHeader("Adres Auto")]
 		public string CarAddress { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        [NLNameAttribute("Woonplaats", mandatory: true, summaryTable: true)]
+        [NLNameAttribute("Woonplaats", mandatory: true)]
+		[SummaryTableHeader("Woonplaats")]
 		public string CarCity { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        [NLNameAttribute("Postcode", mandatory: true, summaryTable: true)]
+        [NLNameAttribute("Postcode", mandatory: true)]
+		[SummaryTableHeader("Postcode")]
 		public string CarPostcode { get; set; }
 
         [DataMember(EmitDefaultValue = false)]

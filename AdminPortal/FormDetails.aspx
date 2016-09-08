@@ -15,7 +15,11 @@
 	</head>
 	<body>
 		<form id="form" runat="server">
-			
+			<asp:Button id="GenerateReportButton" Text="Rapport maken" CssClass="btn btn-default" runat="server"/>
+			<asp:Button id="CompleteButton" Text="Compleet" CssClass="btn btn-default" runat="server"/>
+			<asp:Button id="DeleteButton" Text="Verwijderen" CssClass="btn btn-default" runat="server"/>
+			<asp:Button id="PayButton" Text="Betaald" CssClass="btn btn-default" runat="server"/>
+			<br/>
 		</form>
 		<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"

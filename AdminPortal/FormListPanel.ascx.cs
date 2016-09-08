@@ -43,10 +43,10 @@ namespace AdminPortal
 						var cols = new List<PropertyInfo>();
 						var properties = typeof(FormDTO).GetProperties();
 						foreach (var prop in properties) {
-							var attr = prop.GetCustomAttribute<NLNameAttribute>();
-							if (attr != null && attr.SummaryTable) {
+							var columnName = prop.GetCustomAttribute<SummaryTableHeaderAttribute>()?.ColumnName;
+							if (columnName != null) {
 								var cell = new TableCell();
-								cell.Text = attr.NLName;
+								cell.Text = columnName;
 								tableHeader.Cells.Add(cell);
 								cols.Add(prop);
 							}

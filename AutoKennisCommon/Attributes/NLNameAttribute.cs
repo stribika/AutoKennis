@@ -11,13 +11,10 @@ namespace AutoKennis
 
 		public readonly bool Mandatory;
 
-		public readonly bool SummaryTable;
-
-        public NLNameAttribute(string nlName, bool mandatory = false, bool summaryTable = false)
+        public NLNameAttribute(string nlName, bool mandatory = false)
         {
             NLName       = nlName;
 			Mandatory    = mandatory;
-			SummaryTable = summaryTable;
         }
     }
 }

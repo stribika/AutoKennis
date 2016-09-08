@@ -14,5 +14,13 @@ namespace AdminPortal {
 	public partial class FormDetails {
 		
 		protected System.Web.UI.HtmlControls.HtmlForm form;
+		
+		protected System.Web.UI.WebControls.Button GenerateReportButton;
+		
+		protected System.Web.UI.WebControls.Button CompleteButton;
+		
+		protected System.Web.UI.WebControls.Button DeleteButton;
+		
+		protected System.Web.UI.WebControls.Button PayButton;
 	}
 }

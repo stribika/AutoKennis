@@ -64,6 +64,7 @@
     <Compile Include="ReportEditor.cs" />
     <Compile Include="IReportEditor.cs" />
     <Compile Include="TestReportEditor.cs" />
+    <Compile Include="Attributes\SummaryTableHeaderAttribute.cs" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

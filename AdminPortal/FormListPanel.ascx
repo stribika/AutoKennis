@@ -9,7 +9,7 @@
 	<div class="panel-footer">
 		<label class="btn btn-primary">
 			<asp:CheckBox id="showCompleted" OnCheckedChanged="SendShowCompletedChanged" autocomplete="off" runat="server"/>
-			Voltooid
+			Compleet
 		</label>
 		<label class="btn btn-primary">
 			<asp:CheckBox id="showDeleted" OnCheckedChanged="SendShowDeletedChanged" autocomplete="off" runat="server"/>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Reflection;
 using System.Linq;
 using System.Web;
 using AutoKennis;
@@ -54,6 +55,12 @@ namespace AutoKennisWeb
 
             return form;
         }
+/*
+		protected bool ValidateFormDTO(FormDTO form) {
+			foreach (var prop in form.GetType().GetProperties()) {
+				prop.GetCustomAttribute<NLNameAttribute>
+			}
+		}*/
 
 		public void SendOutMail(FormType formType)
         {
