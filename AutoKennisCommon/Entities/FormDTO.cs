@@ -38,7 +38,7 @@ namespace AutoKennis
         public string PhoneNumberPrimary { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        [NLNameAttribute("Alternatief telefoonnummer", mandatory: true)]
+        [NLNameAttribute("Alternatief telefoonnummer")]
         public string PhoneNumberAlternate { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
@@ -70,17 +70,17 @@ namespace AutoKennis
 		public string CarYear { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        [NLNameAttribute("Adres Auto", mandatory: true)]
+        [NLNameAttribute("Adres Auto")]
 		[SummaryTableHeader("Adres Auto")]
 		public string CarAddress { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        [NLNameAttribute("Woonplaats", mandatory: true)]
+        [NLNameAttribute("Woonplaats")]
 		[SummaryTableHeader("Woonplaats")]
 		public string CarCity { get; set; }
 
         [DataMember(EmitDefaultValue = false)]
-        [NLNameAttribute("Postcode", mandatory: true)]
+        [NLNameAttribute("Postcode")]
 		[SummaryTableHeader("Postcode")]
 		public string CarPostcode { get; set; }
 

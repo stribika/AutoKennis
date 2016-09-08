@@ -53,14 +53,22 @@ namespace AutoKennisWeb
             form.PaymentMethod = Request.Form.Get("paymentMethod");
             form.IpAddress = Request.UserHostAddress;
 
+			ValidateFormDTO(form);
+
             return form;
         }
-/*
-		protected bool ValidateFormDTO(FormDTO form) {
+
+		protected void ValidateFormDTO(FormDTO form) {
 			foreach (var prop in form.GetType().GetProperties()) {
-				prop.GetCustomAttribute<NLNameAttribute>
+				var mandatory = prop.GetCustomAttribute<NLNameAttribute>()?.Mandatory;
+				if (mandatory.HasValue && mandatory.Value) {
+					var val = prop.GetValue(form) as string;
+					if (val == null || val.Length == 0) {
+						throw new ArgumentNullException(prop.GetCustomAttribute<NLNameAttribute>().NLName);
+					}
+				}
 			}
-		}*/
+		}
 
 		public void SendOutMail(FormType formType)
         {

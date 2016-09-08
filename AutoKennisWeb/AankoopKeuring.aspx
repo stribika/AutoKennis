@@ -20,7 +20,7 @@
     <!-- Start of the body content for CoffeeCup Web Form Builder -->
         <form runat="server" style="WIDTH: 910px; FONT-SIZE: 12px; WebkitTransform: " id="docContainer"
     class="fb-toplabel fb-100-item-column fb-large selected-object" enctype="multipart/form-data"
-    method="post" action="AankoopKeuring.aspx" novalidate="novalidate"
+    method="post" action="AankoopKeuring.aspx"
     data-form="manual_iframe">
    
       <div style="MIN-HEIGHT: 103px" id="fb-form-header1" class="fb-form-header fb-item-alignment-left">
