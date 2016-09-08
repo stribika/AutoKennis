@@ -18,9 +18,10 @@
   
   <body>
     <!-- Start of the body content for CoffeeCup Web Form Builder -->
-    <form style="WIDTH: 910px; FONT-SIZE: 12px" id="docContainer" class="fb-toplabel fb-100-item-column fb-large selected-object"
-    enctype="multipart/form-data" method="post" action="../aankoop-begeleiding-form.php"
-    novalidate="novalidate" data-form="manual_iframe" runat="server">
+     <form runat="server" style="WIDTH: 910px; FONT-SIZE: 12px; WebkitTransform: " id="docContainer"
+    class="fb-toplabel fb-100-item-column fb-large selected-object" enctype="multipart/form-data"
+    method="post" action="AankoopBegeleiding.aspx" novalidate="novalidate"
+    data-form="manual_iframe">
       <div style="MIN-HEIGHT: 103px" id="fb-form-header1" class="fb-form-header fb-item-alignment-left">
         <a id="fb-link-logo1" class="fb-link-logo" href="" target="_top"><img style="WIDTH: 223px; DISPLAY: inline; HEIGHT: 103px" id="fb-logo1" class="fb-logo" title="Alternative text" alt="Alternative text" src="common/images/foto-allebedrijven.jpg"/></a>
       </div>
