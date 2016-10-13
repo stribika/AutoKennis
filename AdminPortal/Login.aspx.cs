@@ -14,7 +14,7 @@ namespace AdminPortal {
 		public void SubmitButtonClicked(object sender, EventArgs args) {
 
             if (ValidateUser(Username.Text, Password.Text)) {
-            FormsAuthentication.RedirectFromLoginPage(Username.Text, createPersistentCookie: true);
+				FormsAuthentication.RedirectFromLoginPage(Username.Text, createPersistentCookie: true);
 			} else {
 				ErrorMessage.Visible = true;
 				Response.StatusCode = 403;
@@ -22,8 +22,13 @@ namespace AdminPortal {
 		}
 
 		private bool ValidateUser(string username, string password) {
-			var user = UserDAO.GetUser(username);
-			return user.Validate(password);
+			if (UserDAO.IsFirstRun()) {
+				UserDAO.AddUser(new User(username, password));
+				return true;
+			} else {
+				var user = UserDAO.GetUser(username);
+				return user.Validate(password);
+			}
 		}
 	}
 }

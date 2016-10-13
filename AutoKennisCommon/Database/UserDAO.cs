@@ -56,6 +56,22 @@ namespace AutoKennis {
 			reader.GetBytes(reader.GetOrdinal(column), 0, buffer, 0, buffer.Length);
 			return buffer;
 		}
+
+		public bool IsFirstRun() {
+			using (var connection = Provider.CreateConnection()) {
+				connection.ConnectionString = ConnectionString;
+				connection.Open();
+
+				using (var command = Provider.CreateCommand()) {
+					command.Connection = connection;
+					command.CommandText = "select 1 from RegisteredUser limit 1";
+
+					using (var reader = command.ExecuteReader()) {
+						return !reader.Read();
+					}
+				}
+			}
+		}
 	}
 }
 
